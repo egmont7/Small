@@ -1,0 +1,37 @@
+#Classes.txt
+#This is a simple list of classes that need to be compiled for PixelGUI.
+#pound signs comment. Don't use file extensions
+#
+#		main GUI classes
+PixelGUI
+TabSelectionWindow
+AnalysisSelectionWindow
+SaveSelectionWindow
+#		Abstract Base Classes
+PixelTab
+anaPixelTree
+anaPixelTab
+#		Helper tabs
+PixelTabMacroRunner
+TGCommandFrame
+#		Analysis Package 1
+anaPixelTabBadEdges
+LowROCOccupancies
+DigiModuleMap
+DigiROCMap
+ROCEffTab
+PChemTab
+#		Analysis Package 2
+PixelTabChargeDistribution
+TabX
+kShortTab
+#		Analysis Package 3
+LumiblockTab
+OccEventTab
+OccTab
+TkPerEventTab
+PrimaryVertexTab
+TrackMomentumTab
+PixelTabSizeDistribution
+#		Analysis Package 4
+TriggerTab
