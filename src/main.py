@@ -5,53 +5,94 @@ Created on Aug 23, 2014
 '''
 import pygame as pg
 
-from utils import Vector, QuadTree, Body
-from itertools import product
+from levels import Level1
+from physics import QuadTree, configure_physics, update_player_physics
+from utils import Vector
+import rdc
 import sys
 
+bodies = []
+safe_zones = []
+player = None
 
-
-SCREEN_WIDTH, SCREEN_HEIGHT = 800, 800
-BG_COLOR = 150, 150, 80
-def main():
+def loadLevel(level):
+    global bodies, safe_zones, player
+    configure_physics(level.physics)
+    bodies = level.getBodies()
+    safe_zones = level.getSafeZones()
+    player = level.getPlayer()
     
+
+def handle_input():
+    keys = pg.key.get_pressed()
+    player.clearMotion()
+    if keys[pg.K_w]:
+        player.addMotion(Vector(0,-1))
+    if keys[pg.K_s]:
+        player.addMotion(Vector(0,1))
+    if keys[pg.K_a]:
+        player.addMotion(Vector(-1,0))
+    if keys[pg.K_d]:
+        player.addMotion(Vector(1,0))
+    if keys[pg.K_ESCAPE]:
+        sys.exit()
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
+            sys.exit()
+
+SCREEN_WIDTH, SCREEN_HEIGHT = 1000, 1000
+BG_COLOR = 0, 0, 0
+
+def to_pixels(pos, rad):
+    posPix = int(pos.x*SCREEN_WIDTH),int(pos.y*SCREEN_HEIGHT)
+    radPix = int(rad*SCREEN_WIDTH)
+    return radPix, posPix
+
+def main():
+    global body
     pg.init()
     screen = pg.display.set_mode(
                 (SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
     clock = pg.time.Clock()
+    myfont = pg.font.SysFont("monospace", 15)
     
-    bodies = []
-    #for x,y in product([0.2,0.4,0.6,0.8],[0.2,0.4,0.6,0.8]):
-    #    bodies.append(Body(mass=1, pos=Vector(x,y), vel=Vector()))
-    
-    bodies.append(Body(mass=10, pos = Vector(0.25,0.5), vel = Vector(0,-.003)))
-    bodies.append(Body(mass=10, pos = Vector(0.75,0.5), vel = Vector(0, .003)))
+    loadLevel(Level1())
     
     while True:
         #print("loop begin: {} objects".format(len(bodies)))
-        time_passed = clock.tick(50)
-        
-        for event in pg.event.get():
-            if event.type == pg.QUIT:
-                sys.exit()
+        clock.tick(50)
+        handle_input()
         
         # Redraw the background
         screen.fill(BG_COLOR)
+        player.inSafe = False
+        collTree = rdc.RDC(bodies + safe_zones + [player])
+        collTree.DoRDC()
         
+        if player.inSafe:
+            physTree = QuadTree(bodies)
+        else:
+            physTree = QuadTree(bodies + [player])
+        physTree.doPhysics()
         
-        tree = QuadTree.fromList(bodies)
-        for body in bodies: 
-            body.force = tree.getForce(body)
-            #print(body.force)
-            #print(body.vel,'\n')
-            body.update(time_passed)
-        bodies = [b for b in bodies if  0 < b.pos.x < 1 and 0 < b.pos.y < 1]
-        
+        update_player_physics(player)
+        hits = player.updateScore()
+        print("Player's Score: {}".format(player.score))
+        for h in hits: bodies.remove(h)
         for body in bodies:
-            x = int(body.pos.x*SCREEN_WIDTH)
-            y = int(body.pos.y*SCREEN_HEIGHT)
-            pg.draw.circle(screen, (255,255,0), (x, y), 20 ,10)
-
+            rad, pos = to_pixels(body.pos, body.rad)
+            pg.draw.circle(screen, body.color, pos, rad ,2)
+        
+        for sz in safe_zones:
+            rad, pos = to_pixels(sz.pos, sz.rad)
+            pg.draw.circle(screen, (0,0,255), pos, rad , rad)
+        
+        rad, pos = to_pixels(player.pos, player.rad)
+        pg.draw.circle(screen, (255,0,255), pos, rad)
+        
+        label = myfont.render("Score: {}".format(player.score), 1, (255,255,0))
+        screen.blit(label,(50,50))
+        
         pg.display.flip()
     
 

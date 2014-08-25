@@ -10,7 +10,10 @@ class Vector:
     def __init__(self, x = 0, y = 0):
         self.x = float(x)
         self.y = float(y)
-        
+    
+    def __eq__(self, val):
+        return self[0] == val[0] and self[1] == val[1]
+    
     def __add__(self, val):
         return Vector(self[0] + val[0], self[1] + val[1])
     
