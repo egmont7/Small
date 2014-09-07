@@ -35,17 +35,17 @@ class Level1(Level):
     
     def __init__(self):
         super().__init__()
-        self.physics["RESTITUTION"] = 3
-        self.physics["G"] = 6
+        self.physics["RESTITUTION"] = 4.
+        self.physics["G"] = 8
         self.physics["OVERSPEED_DAMP"] = 0.8
         self.physics["NORMAL_DAMP"] = 0.999
-        self.physics["SPEED_LIMIT"] = 40
+        self.physics["SPEED_LIMIT"] = 10
         
     def getBodies(self):
         bodies = []
         
         for r in [.3]:
-            for theta in frange(0, 2*math.pi, .3):
+            for theta in frange(0, 2*math.pi, .1):
                 x = 0.5 + (r+.05)*math.cos(theta)
                 y = 0.5 + (r+.05)*math.sin(theta)
                 vx = 0.4*math.sin(theta)
@@ -63,10 +63,11 @@ class Level1(Level):
         zones.append(SafeZone(Vector(.25,.75), .1))
         zones.append(SafeZone(Vector(.75,.25), .1))
         zones.append(SafeZone(Vector(.75,.75), .1))
+        zones.append(SafeZone(Vector(.5,.5), .05))
         return zones
     
     def getPlayer(self):
-        return Player(Vector(.5,.5),Vector(0,0), 100000, 1, 0.02)
+        return Player(Vector(.5,.5),Vector(0,0), 100000, 10, 0.02)
     
 class Level2(Level):
     

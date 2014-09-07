@@ -142,7 +142,6 @@ class QuadTree:
                 child_pos = QuadTree.getChildPos(card, self.pos, self.size)
                 qt = QuadTree.QuadTreeNode(self, self.size/2, child_pos)
                 if self.children[card].pos == body.pos:
-                    print(self.children[card].pos, body.pos)
                     body.pos.x += 0.001
                 qt.insert(self.children[card])
                 qt.insert(body)

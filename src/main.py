@@ -59,7 +59,6 @@ def main():
     loadLevel(Level1())
     
     while True:
-        #print("loop begin: {} objects".format(len(bodies)))
         clock.tick(50)
         handle_input()
         
@@ -77,8 +76,8 @@ def main():
         
         update_player_physics(player)
         hits = player.updateScore()
-        print("Player's Score: {}".format(player.score))
         for h in hits: bodies.remove(h)
+
         for body in bodies:
             rad, pos = to_pixels(body.pos, body.rad)
             pg.draw.circle(screen, body.color, pos, rad ,2)
