@@ -36,10 +36,10 @@ class Level1(Level):
     def __init__(self):
         super().__init__()
         self.physics["RESTITUTION"] = 4.
-        self.physics["G"] = 8
+        self.physics["G"] = 10
         self.physics["OVERSPEED_DAMP"] = 0.8
         self.physics["NORMAL_DAMP"] = 0.999
-        self.physics["SPEED_LIMIT"] = 10
+        self.physics["SPEED_LIMIT"] = 60
         
     def getBodies(self):
         bodies = []
@@ -59,15 +59,15 @@ class Level1(Level):
     
     def getSafeZones(self):
         zones = []
-        zones.append(SafeZone(Vector(.25,.25), .1))
-        zones.append(SafeZone(Vector(.25,.75), .1))
-        zones.append(SafeZone(Vector(.75,.25), .1))
-        zones.append(SafeZone(Vector(.75,.75), .1))
-        zones.append(SafeZone(Vector(.5,.5), .05))
+       # zones.append(SafeZone(Vector(.25,.25), .1))
+       # zones.append(SafeZone(Vector(.25,.75), .1))
+       # zones.append(SafeZone(Vector(.75,.25), .1))
+       # zones.append(SafeZone(Vector(.75,.75), .1))
+       # zones.append(SafeZone(Vector(.5,.5), .05))
         return zones
     
     def getPlayer(self):
-        return Player(Vector(.5,.5),Vector(0,0), 100000, 10, 0.02)
+        return Player(Vector(.5,.5),Vector(0,0), 150000, 150, 0.02)
     
 class Level2(Level):
     

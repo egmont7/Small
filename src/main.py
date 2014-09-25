@@ -49,7 +49,7 @@ def to_pixels(pos, rad):
     return radPix, posPix
 
 def main():
-    global body
+    global bodies
     pg.init()
     screen = pg.display.set_mode(
                 (SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
@@ -93,6 +93,9 @@ def main():
         screen.blit(label,(50,50))
         
         pg.display.flip()
+
+        if(len([b for b in bodies if b.value > 0]) == 0):
+            loadLevel(Level1())
     
 
 if __name__ == "__main__":
