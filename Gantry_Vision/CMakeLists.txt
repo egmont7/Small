@@ -1,0 +1,11 @@
+CMAKE_MINIMUM_REQUIRED ( VERSION 2.6 )
+PROJECT ( fiducials )
+
+ADD_DEFINITIONS ( -std=c++11 )
+
+FIND_PACKAGE( OpenCV REQUIRED )
+ADD_EXECUTABLE ( fiducials fiducials.cpp )
+TARGET_LINK_LIBRARIES ( fiducials ${OpenCV_LIBS} )
+
+ADD_EXECUTABLE ( focus focus.cpp )
+TARGET_LINK_LIBRARIES ( focus ${OpenCV_LIBS} )
