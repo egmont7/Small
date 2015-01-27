@@ -1,0 +1,84 @@
+  #
+ #  Makefile
+ #  
+ #
+ #  Created by Tony Kelly II on 5/28/10.
+ #  Modified by Caleb Fangmeier on 7/09/10 to build PixelGUI
+ #                                 5/10/11 for improved speed
+ #  This is the makefile which is used to compile all the
+ #		necessary implimentation files and build all the
+ #		libraries that the GUI needs.
+ #
+ #
+#
+#  Defining some variables to make changing the compiling
+#	options later an easier task.  This is just in case
+#	the GUI grows to unforseen proportions.
+#
+CC=g++
+CFLAGS=`root-config --cflags --glibs`
+LDFLAGS=`root-config --cflags`
+
+#List here an object file for each class that needs to be compiled
+objects = TabSelectionWindow.o AnalysisSelectionWindow.o SaveSelectionWindow.o PixelTab.o anaPixelTree.o anaPixelTab.o PixelTabMacroRunner.o TGCommandFrame.o anaPixelTabBadEdges.o LowROCOccupancies.o DigiModuleMap.o DigiROCMap.o ROCEffTab.o PChemTab.o PixelTabChargeDistribution.o TabX.o kShortTab.o LumiblockTab.o OccEventTab.o OccTab.o TkPerEventTab.o PrimaryVertexTab.o TrackMomentumTab.o PixelTabSizeDistribution.o TriggerTab.o  
+#List here header files needed by rootcint
+headers = PixelGUI.h TabSelectionWindow.h AnalysisSelectionWindow.h SaveSelectionWindow.h PixelTab.h anaPixelTree.h anaPixelTab.h PixelTabMacroRunner.h TGCommandFrame.h anaPixelTabBadEdges.h LowROCOccupancies.h DigiModuleMap.h DigiROCMap.h ROCEffTab.h PChemTab.h PixelTabChargeDistribution.h TabX.h kShortTab.h LumiblockTab.h OccEventTab.h OccTab.h TkPerEventTab.h PrimaryVertexTab.h TrackMomentumTab.h PixelTabSizeDistribution.h TriggerTab.h 
+PixelGUI: PixelGUI_Dict.cc $(objects) PixelGUI.cc PixelGUI.h
+	$(CC) $(CFLAGS) -o PixelGUI PixelGUI.cc $(objects) PixelGUI_Dict.cc
+	@clear
+	@echo Done Compiling all Routines
+TabSelectionWindow.o: TabSelectionWindow.h TabSelectionWindow.cc 
+	$(CC) $(LDFLAGS) -c -o TabSelectionWindow.o TabSelectionWindow.cc 
+AnalysisSelectionWindow.o: AnalysisSelectionWindow.h AnalysisSelectionWindow.cc 
+	$(CC) $(LDFLAGS) -c -o AnalysisSelectionWindow.o AnalysisSelectionWindow.cc 
+SaveSelectionWindow.o: SaveSelectionWindow.h SaveSelectionWindow.cc 
+	$(CC) $(LDFLAGS) -c -o SaveSelectionWindow.o SaveSelectionWindow.cc 
+PixelTab.o: PixelTab.h PixelTab.cc 
+	$(CC) $(LDFLAGS) -c -o PixelTab.o PixelTab.cc 
+anaPixelTree.o: anaPixelTree.h anaPixelTree.cc 
+	$(CC) $(LDFLAGS) -c -o anaPixelTree.o anaPixelTree.cc 
+anaPixelTab.o: anaPixelTab.h anaPixelTab.cc 
+	$(CC) $(LDFLAGS) -c -o anaPixelTab.o anaPixelTab.cc 
+PixelTabMacroRunner.o: PixelTabMacroRunner.h PixelTabMacroRunner.cc 
+	$(CC) $(LDFLAGS) -c -o PixelTabMacroRunner.o PixelTabMacroRunner.cc 
+TGCommandFrame.o: TGCommandFrame.h TGCommandFrame.cc 
+	$(CC) $(LDFLAGS) -c -o TGCommandFrame.o TGCommandFrame.cc 
+anaPixelTabBadEdges.o: anaPixelTabBadEdges.h anaPixelTabBadEdges.cc 
+	$(CC) $(LDFLAGS) -c -o anaPixelTabBadEdges.o anaPixelTabBadEdges.cc 
+LowROCOccupancies.o: LowROCOccupancies.h LowROCOccupancies.cc 
+	$(CC) $(LDFLAGS) -c -o LowROCOccupancies.o LowROCOccupancies.cc 
+DigiModuleMap.o: DigiModuleMap.h DigiModuleMap.cc 
+	$(CC) $(LDFLAGS) -c -o DigiModuleMap.o DigiModuleMap.cc 
+DigiROCMap.o: DigiROCMap.h DigiROCMap.cc 
+	$(CC) $(LDFLAGS) -c -o DigiROCMap.o DigiROCMap.cc 
+ROCEffTab.o: ROCEffTab.h ROCEffTab.cc 
+	$(CC) $(LDFLAGS) -c -o ROCEffTab.o ROCEffTab.cc 
+PChemTab.o: PChemTab.h PChemTab.cc 
+	$(CC) $(LDFLAGS) -c -o PChemTab.o PChemTab.cc 
+PixelTabChargeDistribution.o: PixelTabChargeDistribution.h PixelTabChargeDistribution.cc 
+	$(CC) $(LDFLAGS) -c -o PixelTabChargeDistribution.o PixelTabChargeDistribution.cc 
+TabX.o: TabX.h TabX.cc 
+	$(CC) $(LDFLAGS) -c -o TabX.o TabX.cc 
+kShortTab.o: kShortTab.h kShortTab.cc 
+	$(CC) $(LDFLAGS) -c -o kShortTab.o kShortTab.cc 
+LumiblockTab.o: LumiblockTab.h LumiblockTab.cc 
+	$(CC) $(LDFLAGS) -c -o LumiblockTab.o LumiblockTab.cc 
+OccEventTab.o: OccEventTab.h OccEventTab.cc 
+	$(CC) $(LDFLAGS) -c -o OccEventTab.o OccEventTab.cc 
+OccTab.o: OccTab.h OccTab.cc 
+	$(CC) $(LDFLAGS) -c -o OccTab.o OccTab.cc 
+TkPerEventTab.o: TkPerEventTab.h TkPerEventTab.cc 
+	$(CC) $(LDFLAGS) -c -o TkPerEventTab.o TkPerEventTab.cc 
+PrimaryVertexTab.o: PrimaryVertexTab.h PrimaryVertexTab.cc 
+	$(CC) $(LDFLAGS) -c -o PrimaryVertexTab.o PrimaryVertexTab.cc 
+TrackMomentumTab.o: TrackMomentumTab.h TrackMomentumTab.cc 
+	$(CC) $(LDFLAGS) -c -o TrackMomentumTab.o TrackMomentumTab.cc 
+PixelTabSizeDistribution.o: PixelTabSizeDistribution.h PixelTabSizeDistribution.cc 
+	$(CC) $(LDFLAGS) -c -o PixelTabSizeDistribution.o PixelTabSizeDistribution.cc 
+TriggerTab.o: TriggerTab.h TriggerTab.cc 
+	$(CC) $(LDFLAGS) -c -o TriggerTab.o TriggerTab.cc 
+PixelGUI_Dict.cc: $(headers) PixelGUI_Linkdef.h
+	rootcint -f PixelGUI_Dict.cc -c $(headers) PixelGUI_Linkdef.h
+
+clean:
+	@rm -rf *.o PixelGUI PixelGUI_Dict.*
