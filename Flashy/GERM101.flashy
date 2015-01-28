@@ -153,6 +153,7 @@ sympathisch/unsympathisch   :: likable/unlikable
 toll!                       :: super!
 ganz toll!                  :: super! great!
 
+#==============================================================================
 $Kapitel 1 Substantive
 der/die Amerikaner/in       :: the american
 der Beruf                   :: the profession/occupation
@@ -181,9 +182,10 @@ das Semester                :: the semester
 der Spaß                    :: fun
 der/die Student/in          :: the student
 die Universität             :: the university
-der Wohnortf                :: the place of residence
+der Wohnort                 :: the place of residence
 die Zeitung                 :: newspaper
 
+#==============================================================================
 $Kapitel 1 Verben
 arbeiten                    :: to work
 besuchen                    :: to visit
@@ -212,6 +214,7 @@ telefonieren                :: to talk on the phone
 wandern                     :: to hike
 wohnen                      :: to reside/live
 
+#==============================================================================
 $Kapitel 1 Personalpronomen
 ich                         :: I
 du                          :: you(informal, sing.)
@@ -222,6 +225,7 @@ wir                         :: we
 ihr                         :: you(informal, pl.)
 Sie                         :: you(formal, sing./pl.)
 
+#==============================================================================
 $Kapitel 1 Interrogativpronomen
 wann                        :: when
 was                         :: what
@@ -230,6 +234,7 @@ wie                         :: how
 wo                          :: where
 woher                       :: from where
 
+#==============================================================================
 $Kapitel 1 Sonstiges
 aber                        :: but
 bestimmt                    :: not doubt/definitely
