@@ -1,0 +1,151 @@
+#This is a Flashy Card File
+
+#==============================================================================
+$Einführung
+grüß dich                     :: hello, hi(informal)
+guten Abend                   :: good evening
+(guten) Morgen                :: good morning
+(guten) Tag                   :: hello, good day
+hallo                         :: hello(informal)
+herzlich willkommen           :: welcome
+(auf) Wiedersehen             :: good-bye
+gute Nacht                    :: good night
+Mach's gut.                   :: take care
+tschüss                       :: so long, bye(informal)
+
+Frau; die Frau                :: Mrs., Ms, woman
+Herr; der Herr                :: Mr. gentleman
+der Lehrer / die Lehrerin     :: teacher
+Das ist ...                   :: This is ...
+Wie heißt du?                 :: What's your name?(informal)
+Wie ist dein Name?            :: What's your name?(informal)
+Wie heißen Sie?               :: What's your name?(formal)
+Wie ist Ihr Name?             :: What's your name?(formal)
+Woher kommst du?              :: Where are you from?(informal)
+Woher kommen Sie?             :: Where are you from?(formal)
+Ich bin ...                   :: I am ...
+Ich heiße ...                 :: My name is.
+Ich komme aus ...             :: I'm from ...
+Mein Name ist ...             :: My name is ...
+bitte                         :: please/you're welcome
+danke                         :: thanks
+danke schön                   :: thanks very much
+Freut mich.                   :: pleased to meet you.
+auch                          :: too, also
+und                           :: and
+
+ja                            :: yes
+na klar                       :: absolutely, of course
+nein                          :: no
+Wei heißt ...?                :: What is the name of ...?
+Wie heißt die Stadt           :: What is the name of the city?
+Wie heißt die Straße          :: What is the name of the street?
+Wie ist ...?                  :: What is ...?
+Wie ist deine/Ihre Telefonnummer? :: What is you're telephone number?
+Wie ist die adresse?          :: what is the address?
+Wie ist die Hausnummer?       :: What is the street address?
+Wie ist die Postleitzahl?     :: What is the postal code?
+
+Geht's gut?                   :: Are you doing well(informal)
+Na, wie geht's?               :: How are you?(casual)
+Wie geht's?                   :: How are you?(informal)
+Wie geht's dir                :: How are you?(informal)
+Wie geht es Ihnen?            :: How are you?(formal)
+ausgezeichnet                 :: excellent
+danke, gut                    :: fine, thanks
+nicht besonders gut           :: not particuarly well
+prima                         :: great, super
+schlecht                      :: bad(ly), poor(ly)
+sehr gut                      :: very well; fine; good
+so lala                       :: O.K., so-so
+
+Alles klar.                   :: I get it.
+Das weiß ich nicht.           :: I don't know.
+Ich habe eine Frage.          :: I have a question.
+Ich verstehe das nicht        :: I don't understand
+Langsamer, bitte.             :: Slower, please.
+Was bedeutet ...?             :: What does ... mean?
+Wie bitte?                    :: Pardon? What did you say?
+Wie sagt man ... auf Deutsch? :: How do you say ... in German?
+Wie schreibt man ...?         :: How do you write ...?
+
+
+#==============================================================================
+$Einführung Zahlen
+null                          :: zero
+eins                          :: one
+zwei                          :: two
+drei                          :: three
+vier                          :: four
+fünf                          :: five
+sechs                         :: six
+sieben                        :: seven
+acht                          :: eight
+neun                          :: nine
+zehn                          :: ten
+elf                           :: eleven
+zwölf                         :: twelve
+dreizehn                      :: thirteen
+vierzehn                      :: fourteen
+fünfzehn                      :: fifteen
+sechzehn                      :: sixteen
+siebzehn                      :: seventeen
+achtzehn                      :: eighteen
+neunzehn                      :: nineteen
+zwanzig                       :: twenty
+dreißig                       :: thirty
+vierzig                       :: fourty
+fünfzig                       :: fifty
+sechzig                       :: sixty
+siebzig                       :: seventy
+achtzig                       :: eighty
+neunzig                       :: ninety
+(ein)hundert                  :: (one) hundred
+zweihundert                   :: two hundred
+dreihundert                   :: three hundred
+(ein)tausend                  :: (one) thousand
+zweitausend                   :: two thousand
+dreitausend                   :: three thousand
+
+#==============================================================================
+$Einführung Länder
+Belgien                       :: Belgium
+Dänemark                      :: Denmark
+Deutschland                   :: Germany
+Frankreich                    :: France
+Italien                       :: Italy
+Liechtenstein                 :: Liechtenstein
+Luxemburg                     :: Luxembourg
+die Niederlande               :: The Netherlands
+Österreich                    :: Austria
+Polen                         :: Poland
+die Schweiz                   :: Switzerland
+die Slowakei                  :: Slovakia
+Slowenien                     :: Slovenia
+Tschechien                    :: the Czech Republic
+Ungarn                        :: Hungary
+
+#==============================================================================
+$Kapitel 1
+alt                         :: old
+ernst                       :: serious
+exzentrisch                 :: eccentric
+fantastisch                 :: fantastic
+faul                        :: lazy
+fleißig                     :: hardworking/diligent
+freundlich                  :: friendly
+unfreundlich                :: unfriendly
+groß                        :: tall
+gut                         :: good, well
+Er tanzt gut                :: He dances well.
+interessant                 :: interesting
+kompliziert                 :: complicated
+konservativ                 :: conservative
+langweilig                  :: boring
+
+#==============================================================================
+$Kapitel 2
+das Bett,-en                :: bed
+der CD-Spieler,-            :: CD player
+der Computer,-              :: computer
+
