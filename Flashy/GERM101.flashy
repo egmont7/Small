@@ -126,7 +126,7 @@ Tschechien                    :: the Czech Republic
 Ungarn                        :: Hungary
 
 #==============================================================================
-$Kapitel 1
+$Kapitel 1 Eigenschaften
 alt                         :: old
 ernst                       :: serious
 exzentrisch                 :: eccentric
@@ -142,6 +142,117 @@ interessant                 :: interesting
 kompliziert                 :: complicated
 konservativ                 :: conservative
 langweilig                  :: boring
+lustig                      :: cheerful; fun-loving
+nett                        :: nice
+praktisch/unpraktisch       :: practical/unpractical
+romantisch                  :: romantic
+ruhig                       :: quiet
+sportlich                   :: athletic
+stressig                    :: stressful
+sympathisch/unsympathisch   :: likable/unlikable
+toll!                       :: super!
+ganz toll!                  :: super! great!
+
+$Kapitel 1 Substantive
+der/die Amerikaner/in       :: the american
+der Beruf                   :: the profession/occupation
+das Buch                    :: the book
+(das) Deutsch               :: German
+das Essen                   :: the food; eating
+das Fahrrad                 :: the bicycle
+der Freund/die Freundin     :: the friend
+der Geburtsort              :: the birthplace
+der Geburtstag              :: the birthday
+das Hobby                   :: the hobby
+der/die Hochschullehrer/in  :: the university instructor
+das Interesse               :: the interest
+das Jahr                    :: the year
+nächstes Jahr               :: next year
+der/die Journalist/in       :: the journalist
+der Mann                    :: the man
+die Mensa                   :: the student cafeteria
+die Musik                   :: the music
+der Name                    :: the name
+der Nachname                :: the family name
+der Vorname                 :: the first name
+das Praktikum               :: the internship
+der/die Professor/in        :: the professor
+das Semester                :: the semester
+der Spaß                    :: fun
+der/die Student/in          :: the student
+die Universität             :: the university
+der Wohnortf                :: the place of residence
+die Zeitung                 :: newspaper
+
+$Kapitel 1 Verben
+arbeiten                    :: to work
+besuchen                    :: to visit
+bleiben                     :: to stay/remain
+diskutieren                 :: to discuss
+essen                       :: to eat
+fahren                      :: to ride/drive
+finden                      :: to find
+gehen                       :: to go
+heißen                      :: to be called
+hören                       :: to listen/hear
+kochen                      :: to cook
+kommen                      :: to come
+lernen                      :: to learn/study
+lesen                       :: to read
+machen                      :: to do/make
+reisen                      :: to travel
+sagen                       :: to say/tell
+schicken                    :: to send
+sein                        :: to be
+spielen                     :: to play
+studieren                   :: to study
+surfen                      :: to surf
+tanzen                      :: to dance
+telefonieren                :: to talk on the phone
+wandern                     :: to hike
+wohnen                      :: to reside/live
+
+$Kapitel 1 Personalpronomen
+ich                         :: I
+du                          :: you(informal, sing.)
+er                          :: he/it
+sie                         :: she/it/they
+es                          :: it
+wir                         :: we
+ihr                         :: you(informal, pl.)
+Sie                         :: you(formal, sing./pl.)
+
+$Kapitel 1 Interrogativpronomen
+wann                        :: when
+was                         :: what
+wer                         :: who
+wie                         :: how
+wo                          :: where
+woher                       :: from where
+
+$Kapitel 1 Sonstiges
+aber                        :: but
+bestimmt                    :: not doubt/definitely
+danke sehr                  :: thanks a lot
+Das macht spaß.             :: That's fun.
+echt                        :: really
+ganz                        :: quite/very/really
+gern                        :: gladly
+heute                       :: today
+hier                        :: here
+immer                       :: always
+nie                         :: never
+jetzt                       :: now
+natürlich                   :: of course/naturally
+nicht                       :: not
+oft                         :: often
+sehr                        :: very
+viel                        :: a lot/much
+vielleicht                  :: maybe/perhaps
+wirklich                    :: really
+
+
+
 
 #==============================================================================
 $Kapitel 2
