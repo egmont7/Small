@@ -1,0 +1,15 @@
+/home/caleb/Sources/Telescope_Project/VFPIX-telescope-Code/pattern_gen/sim/test_pattern.v {1 {vlog -work work /home/caleb/Sources/Telescope_Project/VFPIX-telescope-Code/pattern_gen/sim/test_pattern.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module step_curve_test
+
+Top level modules:
+	step_curve_test
+
+} {} {}} /home/caleb/Sources/Telescope_Project/VFPIX-telescope-Code/pattern_gen/sim/pattern.v {1 {vlog -work work /home/caleb/Sources/Telescope_Project/VFPIX-telescope-Code/pattern_gen/sim/pattern.v
+Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+-- Compiling module step_curve
+
+Top level modules:
+	step_curve
+
+} {} {}}

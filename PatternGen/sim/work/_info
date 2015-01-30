@@ -1,0 +1,43 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/caleb
+vstep_curve
+Z1 !s100 MzlQnK6XECBeelje1a9<c0
+Z2 IdM>7[kG]1Vnij5lBO7?A?2
+Z3 V1ELVCYmXAZUbRT@hJ<meR3
+Z4 d/home/caleb/Sources/Telescope_Project/VFPIX-telescope-Code/pattern_gen/sim
+Z5 w1416514611
+Z6 8/home/caleb/Sources/Telescope_Project/VFPIX-telescope-Code/pattern_gen/sim/pattern.v
+Z7 F/home/caleb/Sources/Telescope_Project/VFPIX-telescope-Code/pattern_gen/sim/pattern.v
+L0 5
+Z8 OV;L;10.1d;51
+r1
+31
+Z9 !s90 -reportprogress|300|-work|work|/home/caleb/Sources/Telescope_Project/VFPIX-telescope-Code/pattern_gen/sim/pattern.v|
+Z10 o-work work -O0
+!i10b 1
+!s85 0
+Z11 !s108 1416515978.294334
+Z12 !s107 /home/caleb/Sources/Telescope_Project/VFPIX-telescope-Code/pattern_gen/sim/pattern.v|
+!s101 -O0
+vstep_curve_test
+!i10b 1
+!s100 YM68DWJMo[V<TVL6:>K0l3
+IiDHdJ5L]1`2nH;`TGFnbE1
+Z13 VE15[zoHM@`?nkYh>hXk;P3
+R4
+w1416515973
+Z14 8/home/caleb/Sources/Telescope_Project/VFPIX-telescope-Code/pattern_gen/sim/test_pattern.v
+Z15 F/home/caleb/Sources/Telescope_Project/VFPIX-telescope-Code/pattern_gen/sim/test_pattern.v
+L0 3
+R8
+r1
+!s85 0
+31
+!s108 1416515978.325660
+!s107 /home/caleb/Sources/Telescope_Project/VFPIX-telescope-Code/pattern_gen/sim/test_pattern.v|
+Z16 !s90 -reportprogress|300|-work|work|/home/caleb/Sources/Telescope_Project/VFPIX-telescope-Code/pattern_gen/sim/test_pattern.v|
+!s101 -O0
+R10

@@ -1,0 +1,53 @@
+# Loading project pattern_gen
+# reading /opt/altera/modelsim_ase/linux/../modelsim.ini
+# Loading project trigger_sampling
+# Compile of test_trigger_sampling.v was successful.
+# Compile of trigger_sampling.v was successful.
+# 2 compiles, 0 failed with no errors. 
+vsim work.test_trigger_sampling
+# vsim work.test_trigger_sampling 
+# Loading work.test_trigger_sampling
+# Loading work.trigger_sampling
+add wave -position insertpoint  \
+sim:/test_trigger_sampling/clk80 \
+sim:/test_trigger_sampling/clk400 \
+sim:/test_trigger_sampling/sync \
+sim:/test_trigger_sampling/reset \
+sim:/test_trigger_sampling/trigger_in \
+sim:/test_trigger_sampling/trigger_out \
+sim:/test_trigger_sampling/trigger_pos \
+sim:/test_trigger_sampling/n \
+sim:/test_trigger_sampling/clkdiv
+run -all
+# ** Note: Data structure takes 17666608 bytes of memory
+#          Process time 0.01 seconds
+#          $stop    : /home/caleb/Sources/DTB_Trigger/trigger_sampling/test_trigger_sampling.v(61)
+#    Time: 5110 ns  Iteration: 0  Instance: /test_trigger_sampling
+# Break in Module test_trigger_sampling at /home/caleb/Sources/DTB_Trigger/trigger_sampling/test_trigger_sampling.v line 61
+# Compile of test_trigger_sampling.v was successful.
+# Compile of trigger_sampling.v failed with 1 errors.
+# 2 compiles, 1 failed with 1 error. 
+# Compile of test_trigger_sampling.v was successful.
+# Compile of trigger_sampling.v was successful.
+# 2 compiles, 0 failed with no errors. 
+restart -f -nolog
+# Loading work.test_trigger_sampling
+# Loading work.trigger_sampling
+run -all
+# ** Note: Data structure takes 17797680 bytes of memory
+#          Process time 0.02 seconds
+#          $stop    : /home/caleb/Sources/DTB_Trigger/trigger_sampling/test_trigger_sampling.v(61)
+#    Time: 5110 ns  Iteration: 0  Instance: /test_trigger_sampling
+# Break in Module test_trigger_sampling at /home/caleb/Sources/DTB_Trigger/trigger_sampling/test_trigger_sampling.v line 61
+# Compile of test_trigger_sampling.v was successful.
+# Compile of trigger_sampling.v was successful.
+# 2 compiles, 0 failed with no errors. 
+restart -f -nolog
+# Loading work.test_trigger_sampling
+# Loading work.trigger_sampling
+run -all
+# ** Note: Data structure takes 17797680 bytes of memory
+#          Process time 0.02 seconds
+#          $stop    : /home/caleb/Sources/DTB_Trigger/trigger_sampling/test_trigger_sampling.v(61)
+#    Time: 5110 ns  Iteration: 0  Instance: /test_trigger_sampling
+# Break in Module test_trigger_sampling at /home/caleb/Sources/DTB_Trigger/trigger_sampling/test_trigger_sampling.v line 61
