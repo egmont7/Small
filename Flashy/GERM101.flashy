@@ -1,4 +1,4 @@
-#This is a Flashy Card File
+#This is the Flashy ard file for GERM101
 
 #==============================================================================
 $Einführung
@@ -257,11 +257,148 @@ vielleicht                  :: maybe/perhaps
 wirklich                    :: really
 
 
-
+#==============================================================================
+$Kapitel 2 Im Kaufhaus
+das Bett   ::   bed
+der CD-Spieler   ::   CD player
+das Foto   ::   photograph
+der Computer   ::   computer
+der Computeranschluss   ::   computer connection
+der DVD-Spieler   ::   DVD player
+der Fernseher   ::   television
+das Handy   ::   cell phone
+der Kleiderschrank   ::   clothes closet
+die Kommode   ::   dresser
+die Lampe   ::   lamp
+das Möbel   ::   furniture
+der Papierkorb   ::   wastepaper basket
+das Poster   ::   poster
+das Radio   ::   radio
+das Regal   ::   shelf
+das Bücherregal   ::   bookcase, bookshelf
+der Sessel   ::   armchair
+das Sofa   ::   sofa, couch
+die Stereoanlage   ::   stereo
+der Stuhl   ::   chair
+das Telefon   ::   telephone
+der Teppich   ::   rug, carpet
+der Tisch   ::   table
+der Couchtisch   ::   coffee table
+der Nachttisch   ::   nightstand
+der Schreibtisch   ::   desk
+die Uhr   ::   clock
+der Videorekorder   ::   video recorder, VCR
+der Wecker   ::   alarm clock
 
 #==============================================================================
-$Kapitel 2
-das Bett,-en                :: bed
-der CD-Spieler,-            :: CD player
-der Computer,-              :: computer
+$Kapitel 2 Das Haus
+das Bad   ::   bathroom
+der Balkon   ::   bgalcony
+das Fenster   ::   window
+die Garage   ::   garage
+der Garten   ::   garden, yard
+das Haus   ::   house
+die Küche   ::   kitchen
+die Terrasse   ::   terrace, patio
+die Tür   ::   door
+die Wand   ::   wall
+das Zimmer   ::   room
+das Arbeitszimmer   ::   workroom, study
+das Badezimmer   ::   bathroom
+das Esszimmer   ::   dining room
+das Schlafzimmer   ::   bedroom
+das Wohnzimmer   ::   living room
 
+#==============================================================================
+$Kapitel 2 Sonstige
+das Auto   ::   car
+der Euro   ::   euro
+das Geld   ::   money
+der Junge   ::   boy
+das Kaufhaus   ::   department store
+der Kunde   ::   customer (male)
+die Kundin   ::   customer (female)
+die Leute (plural)   ::   people
+der Mensch   ::   person, human being
+die Miete   ::   rent
+der Mitbewohner/die Mitbewohnerin   ::   roommate, housemate (male/female)
+das Motorrad   ::   motorcyle
+der Nichtraucher   ::   nonsmoker
+das Problem   ::   problem
+das Studentenwohnheim   ::   dormitory
+der Tag   ::   day
+der Verkäufer/die Verkäuferin   ::   salesperson (male/female)
+das Video   ::   video (tape)
+die Wohngemeinschaft   ::   shared housing
+die Wohnung   ::   apartment
+die Zeit   ::   time
+die Zimmerpflanze   ::   houseplant
+
+#==============================================================================
+$Kapitel 2 Verben
+brauchen   ::   to need
+essen (isst)   ::   to eat
+fahren (fährt)   ::   to drive, ride
+fragen   ::   to ask
+haben (hat)   ::   to have
+Durst haben   ::   to be thirsty
+gern haben   ::   to like (a person or thing)
+Hunger haben   ::   to be hungry
+Lust haben   ::   to feel like (doing something)
+recht haben   ::   to be correct
+Zeit haben   ::   to have time
+kaufen   ::   to buy
+kosten   ::   to cost
+laufen (läuft)   ::   to run, jog
+lesen (liest)   ::   to read
+schlafen (schläft)   ::   to sleep
+schreiben   ::   to write
+schwimmen   ::   to swim
+sehen (sieht)   ::   to see
+sprechen (spricht)   ::   to speak
+suchen   ::   to look for
+trinken   ::   to drink
+
+#==============================================================================
+$Kapitel 2 Adjektive und Adverbien
+alle   ::   all
+bequem   ::   comfortable, comfortably
+billig   ::   inexpensive(ly), cheap(ly)
+da   ::   there
+dringend   ::   desperate(ly)
+dunkel   ::   dark
+frei   ::   free(ly)
+genau   ::   exact(ly)
+gerade   ::   just, exactly
+groß   ::   big, large
+hässlich   ::   ugly
+hell   ::   bright(ly), light
+hoch   ::   high(ly)
+klein   ::   small
+möbliert   ::   furnished
+unmöbliert   ::   unfurnished
+niedrig   ::   low
+noch   ::   still, yet
+nur   ::   only
+preiswert   ::   a bargain, inexpensive(ly)
+recht   ::   quite, rather
+recht preiswert   ::   quite inexpensive, reasonable
+schon   ::   already
+schön   ::   beautiful
+selten   ::   rare(ly)
+so   ::   so
+teuer   ::   expensive(ly)
+viel/viele   ::   much/many
+wieder   ::   again
+
+#==============================================================================
+$Kapitel 2 Sonstiges
+dieser   ::   this
+etwas   ::   something, somewhat, a little (adverb)
+kein   ::   no, none, not any
+nichts   ::   nothing
+warum   ::   why
+Was ist denn los?   ::   What's the matter?
+weit (weg) von ...   ::   far (away) from ...
+welcher   ::   which
+zentral gelegen   ::   centrally located
