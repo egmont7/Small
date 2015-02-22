@@ -203,17 +203,6 @@ def run_deck(deck):
                 elif c == 'q':
                     return
 
-def t():
-    with open("/home/caleb/flashyout.txt",'w') as f:
-        while True:
-            key = SCREEN.getch()
-            f.write(str(key)+'\n')
-            f.write(str(curses.keyname(key))+'\n\n')
-            #key = SCREEN.getkey()
-            #f.write(key+'\n')
-            f.flush()
-
-
 def main(stdscr):
     global SCREEN
     SCREEN = stdscr
@@ -221,7 +210,6 @@ def main(stdscr):
     SCREEN.immedok(True)
     curses.noecho()
     curses.curs_set(0)
-    #t()
     decks = parse_decks()
 
     while True:
