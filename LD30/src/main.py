@@ -5,7 +5,7 @@ Created on Aug 23, 2014
 '''
 import pygame as pg
 
-from levels import Level1
+from levels import get_next_level
 from physics import QuadTree, configure_physics, update_player_physics
 from utils import Vector
 import rdc
@@ -15,7 +15,7 @@ bodies = []
 safe_zones = []
 player = None
 
-def loadLevel(level):
+def load_level(level):
     global bodies, safe_zones, player
     configure_physics(level.physics)
     bodies = level.getBodies()
@@ -56,7 +56,7 @@ def main():
     clock = pg.time.Clock()
     myfont = pg.font.SysFont("monospace", 15)
     
-    loadLevel(Level1())
+    load_level(get_next_level())
     
     while True:
         clock.tick(50)
@@ -94,8 +94,8 @@ def main():
         
         pg.display.flip()
 
-        if(len([b for b in bodies if b.value > 0]) == 0):
-            loadLevel(Level1())
+        if(all(b.value <= 0 for b in bodies)):
+            load_level(get_next_level())
     
 
 if __name__ == "__main__":

@@ -5,6 +5,7 @@ Created on Aug 24, 2014
 '''
 import math
 import random
+from itertools import cycle
 from utils import Body, SafeZone, Player, Vector, frange
 
 
@@ -74,15 +75,18 @@ class Level2(Level):
     
     def __init__(self):
         super().__init__()
-        self.physics['NORMAL_DAMP'] = 1
-        self.physics['G'] = 0
-        self.physics['DT'] = .01
+        self.physics["RESTITUTION"] = 4.
+        self.physics["G"] = 10
+        self.physics["OVERSPEED_DAMP"] = 0.8
+        self.physics["NORMAL_DAMP"] = 0.999
+        self.physics["SPEED_LIMIT"] = 60
     
     def getBodies(self):
         bodies = []
         
         bodies.append(Body(mass = 1, pos = Vector(0.5,0.5), vel = Vector(0,0)))
         bodies.append(Body(mass = 1, pos = Vector(0.7,0.5), vel = Vector(-.19,0)))
+        bodies.append(Body(mass = 1, pos = Vector(0.9,0.9), vel = Vector(0,0)))
         return bodies
     
     def getSafeZones(self):
@@ -94,5 +98,9 @@ class Level2(Level):
         return zones
     
     def getPlayer(self):
-        return Player(Vector(.5,.5),Vector(0,0), 1, 1, 0.2)
+        return Player(Vector(.5,.5),Vector(0,0), 150000, 150, 0.02)
     
+levels = cycle([Level1, Level2])
+def get_next_level():
+    L = next(levels)
+    return L()
