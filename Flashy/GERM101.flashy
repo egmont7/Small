@@ -405,6 +405,7 @@ zentral gelegen                                                                 
 
 #==============================================================================
 $Kapitel 3
+#family
 der Bruder (die Brüder)                                                         :: brother(s)
 die Eltern                                                                      :: parents
 der Enkel (die Enkel)                                                           :: grandson(s)
@@ -429,6 +430,7 @@ die Tante (die Tanten)                                                          
 die Tochter (die Töchter)                                                       :: daughter(s)
 der Vater (die Väter)                                                           :: father
 der Vetter (die Vettern)                                                        :: (male) cousin
+#days
 Montag                                                                          :: Monday
 am Montag                                                                       :: on Monday
 Dienstag                                                                        :: Tuesday
@@ -437,11 +439,13 @@ Donnerstag                                                                      
 Freitag                                                                         :: Friday
 Samstag                                                                         :: Saturday
 Sonntag                                                                         :: Sunday
+#greetings
 Alles Gute!                                                                     :: All the best!
 Herzlichen Glückwunsch zum Geburtstag!                                          :: Happy Birthday!
+#months
 der Monat(e)                                                                    :: Month(s)
 der Januar                                                                      :: January
-im Januar                                                                       :: in January"
+im Januar                                                                       :: in January
 Februar                                                                         :: February
 März                                                                            :: March
 April                                                                           :: April
@@ -453,6 +457,7 @@ September                                                                       
 Oktober                                                                         :: October
 November                                                                        :: November
 Dezember                                                                        :: December
+#holidays
 Feiertage                                                                       :: Holidays
 das Familienfest (-e)                                                           :: family gathering
 das Geschenk (-e)                                                               :: gift;present

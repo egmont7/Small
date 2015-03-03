@@ -164,7 +164,7 @@ def make_hdl(dev_name, signals, stages, patterns, hdl_strings):
         hdl.append(hdl_strings["sig_out"].format(sig_name))
     hdl.append(hdl_strings["res_in"])
     hdl.extend(hdl_strings["body_start"])
-    
+
     hdl_inner = []
     for stage_num, (stage, iters) in enumerate(stages):
         stage_hdl = []
@@ -191,7 +191,7 @@ def make_hdl(dev_name, signals, stages, patterns, hdl_strings):
     hdl.extend(hdl_strings["footer"])
     hdl = '\n'.join(hdl)
     hdl = hdl.replace("***DEV_NAME***",dev_name).replace("\t","  ")
-    
+
     return hdl
 
 if __name__ == "__main__":
@@ -207,7 +207,7 @@ if __name__ == "__main__":
 
     with open(args.input,"r") as infile:
         lines = infile.readlines()
-    
+
     if args.lang == "vhdl":
         hdl_strings = vhdl_strings
         extension = ".vhd"
@@ -219,7 +219,7 @@ if __name__ == "__main__":
 
     dev_name, signals, stages, patterns = parse(lines)
     hdl = make_hdl(dev_name, signals, stages, patterns, hdl_strings)
-    
+
     if args.verbose: print(hdl)
 
     outfile_name = ".".join(args.input.split('.')[:-1])+extension

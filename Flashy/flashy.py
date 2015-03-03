@@ -139,10 +139,10 @@ def get_guess(mimick = None):
             s = s[:-1]
         elif key =='^J' and not mimick: # ENTER
             return s
-        elif key =='^W': # CTRL-W
+        elif key =='^W': # CTRL-W(quit deck)
             return False
         ch = ''
-        if key == '^K': # CTRL-K
+        if key == '^K': # CTRL-K(Enter digraph)
             dig1 = SCREEN.getkey()
             dig2 = SCREEN.getkey()
             dig = (dig1, dig2)
@@ -173,7 +173,7 @@ def run_deck(deck):
         display_stats(len(cards)+1, N)
         display_title(deck.title)
         display_question(show1)
-        if ARGS.spelling:
+        if ARGS.spelling: #Spelling mode
             display_opts('ctrl-W <quit>')
             guess = get_guess()
             if guess is False: return
@@ -188,7 +188,7 @@ def run_deck(deck):
                 display_correct(True)
                 SCREEN.getkey()
 
-        else:
+        else: #Flash card mode
             SCREEN.getkey()
             display_answer(show2)
             display_opts("r <replace>  d <discard>  q <quit>")
