@@ -73,6 +73,8 @@ def parse_decks():
             else:
                 sideA, sideB = (lang.strip() for lang in line.split("::"))
                 decks[-1].cards.append(Card(sideA, sideB))
+                if ARGS.all:
+                    decks[-1].cards.append(Card(sideB, sideA))
     return decks
 
 def display_question(question):
@@ -221,6 +223,9 @@ if __name__ == "__main__":
     parser.add_argument("flashyfile", help="The card file to use")
     parser.add_argument("-r", "--reverse",
                         help="Reverses which side is shown",
+                        action="store_true")
+    parser.add_argument("-a", "--all",
+                        help="Creates deck with cards both flipped and unflipped",
                         action="store_true")
     parser.add_argument("-s", "--spelling",
                         help="Enable spelling mode",
