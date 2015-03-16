@@ -1,0 +1,36 @@
+MaterialDef BlockShader {
+
+    MaterialParameters {
+        Texture2D ColorMap
+        Texture2D StrengthMap
+
+        Vector3  Ambient;
+        Vector3  LightColor;
+        Vector3  LightPosition;
+        Float    Shininess : 0.0;
+        Float    Strength : 0.5;
+
+        Float    ConstantAttenuation : 0.5;
+        Float    LinearAttenuation  : 0.01;
+        Float    QuadraticAttenuation : 0.0;
+
+    }
+
+    Technique {
+        VertexShader GLSL100:   Shaders/BlockShader.vert
+        FragmentShader GLSL100: Shaders/BlockShader.frag
+
+        WorldParameters {
+            WorldViewProjectionMatrix
+            WorldViewMatrix
+            ViewMatrix
+            NormalMatrix
+            CameraPosition
+        }
+
+        Defines {
+            HAS_COLORMAP : ColorMap
+            HAS_STRENGTHMAP : StrengthMap
+        }
+    }
+}
