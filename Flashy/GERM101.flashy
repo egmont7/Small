@@ -473,6 +473,7 @@ die Tradition (-en)                                                             
 der Valentinstag                                                                :: Valentines Day
 das Weihnachten                                                                 :: Christmas
 der Weihnachtsbaum (e)                                                          :: Christmas tree (s)
+#Verbs
 feiern                                                                          :: to celebrate
 geben (du gibst, er/sie/es gibt)                                                :: to give
 gratulieren                                                                     :: to congratulate
@@ -488,6 +489,7 @@ nämlich                                                                        
 neu                                                                             :: new
 verwandt mit                                                                    :: related to
 wichtig                                                                         :: important
+#Numbers
 erste                                                                           :: first
 der erste Mai                                                                   :: May first
 am ersten Mai                                                                   :: on May first
@@ -504,6 +506,8 @@ elfte                                                                           
 zwölfte                                                                         :: twelfth
 dreizehnte                                                                      :: thirteenth
 zwanzigste                                                                      :: twentieth
+
+#owning pronouns
 mein(e)                                                                         :: my
 dein(e)                                                                         :: your (inf)
 sein(e)                                                                         :: his; its
@@ -511,12 +515,15 @@ ihr(e)                                                                          
 unser(e)                                                                        :: our
 euer(e)                                                                         :: yalls (inf)
 Ihr(e)                                                                          :: yalls (f)
+
+#akk prepositions
 durch                                                                           :: through
 für                                                                             :: for
 gegen                                                                           :: against; around (a time)
 ohne                                                                            :: without
 um                                                                              :: at (a time)
-mich                                                                            :: me
+
+mich                                                                            :: me (akk)
 dich                                                                            :: you (inf akk)
 ihn                                                                             :: him; it (akk)
 sie                                                                             :: her; it; them (akk)
@@ -524,6 +531,7 @@ es                                                                              
 uns                                                                             :: us (akk)
 euch                                                                            :: y'all (inf akk)
 Sie                                                                             :: y'all (f akk)
+#others
 es gibt                                                                         :: there is, there are
 Es tut mir leid.                                                                :: Im sorry.
 der Hund (-e)                                                                   :: dog
