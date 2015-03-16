@@ -26,7 +26,7 @@ def configure_physics(phys_params):
     global THETA
     global RESTITUTION
     global PLAYER_DAMP
-    
+
     G = phys_params['G']
     SPEED_LIMIT = phys_params['SPEED_LIMIT']
     OVERSPEED_DAMP = phys_params['OVERSPEED_DAMP']
@@ -44,14 +44,14 @@ def collide_body_body(b1, b2):
 
     #Resolve intersection --
     #Inverse mass quantities
-    im1 = 1 / b1.mass 
+    im1 = 1 / b1.mass
     im2 = 1 / b2.mass
 
     #push-pull them apart based off their mass
     b1.pos = b1.pos + mtd * (im1 / (im1 + im2))
     b2.pos = b2.pos - mtd * (im2 / (im1 + im2))
-    
-    
+
+
     #Impact speed
     v = b1.vel - b2.vel
     vn = Vector.Dot(v, Vector.Normalize(mtd))
@@ -62,7 +62,7 @@ def collide_body_body(b1, b2):
     #Collision impulse
     i = (-(1 + RESTITUTION) * vn) / (im1 + im2)
     impulse = Vector.Normalize(mtd) * i
- 
+
     #Change in momentum
     b1.vel = b1.vel + impulse*im1
     b2.vel = b2.vel - impulse*im2
@@ -76,7 +76,7 @@ def collide_body_static_body(b, sb):
     #Resolve intersection --
     #push-pull them apart based off their mass
     b.pos = b.pos + mtd
-    
+
     #Impact speed
     vn = Vector.Dot(b.vel, Vector.Normalize(mtd))
 
@@ -117,7 +117,7 @@ def update_player_physics(player):
     player.vel *= PLAYER_DAMP
 
 class QuadTree:
-    
+
     class QuadTreeNode:
         def __init__(self, parent = None, size = 0, pos = Vector(0,0)):
             self.children = {Card.NORTHWEST: None,
@@ -125,13 +125,13 @@ class QuadTree:
                              Card.SOUTHWEST: None,
                              Card.SOUTHEAST: None}
             self.parent = parent
-            
+
             self.size = size
             self.pos = pos
-            
+
             self.total_mass = 0
             self.center_of_mass = Vector(0,0)
-            
+
         def insert(self, body):
             card = Card.get_card(self.pos, body.pos)
             self.center_of_mass = (self.center_of_mass*self.total_mass + body.pos*body.mass) / (self.total_mass + body.mass)
@@ -148,14 +148,14 @@ class QuadTree:
                 self.children[card] = qt
             else:
                 self.children[card].insert(body)
-    
+
     def __init__(self, entities):
         self.root = None
         self.entities = entities
         for e in entities:
             self.insert(e)
-    
-    
+
+
     def insert(self, entity):
         if self.root is None:
             self.root = entity
@@ -166,7 +166,7 @@ class QuadTree:
             self.root.insert(entity)
         else:
             self.root.insert(entity)
-    
+
     def __iter__(self):
         if self.root is None:
             return []
@@ -174,7 +174,7 @@ class QuadTree:
             self.iter_stack = []
             self.iter_stack.append(list(self.root.children.values()))
             return self
-    
+
     def __next__(self):
         while len(self.iter_stack) > 0:
             curr_list = self.iter_stack.pop()
@@ -189,11 +189,11 @@ class QuadTree:
                 self.iter_stack.append(curr_list)
                 return curr
         raise StopIteration
-    
+
     def doPhysics(self):
         for e in self.entities:
             self.physicsStep(e)
-    
+
     def physicsStep(self, entity):
         force = Vector()
         if not isinstance(self.root,Sprite):
@@ -216,13 +216,13 @@ class QuadTree:
             entity.vel *= OVERSPEED_DAMP
         else:
             entity.vel *= NORMAL_DAMP
-    
+
     @staticmethod
     def calcForce(pos1, pos2, mass1, mass2):
         f = (pos1 - pos2) / Vector.Distance(pos1, pos2)**3
         f = f*mass1*mass2 * G
         return f
-    
+
     @staticmethod
     def getChildPos(card, pos, size):
         quarter_size = size/4
