@@ -404,8 +404,7 @@ welcher                                                                         
 zentral gelegen                                                                 :: centrally located
 
 #==============================================================================
-$Kapitel 3
-#family
+$Kapitel 3 Familien
 der Bruder (die Brüder)                                                         :: brother(s)
 die Eltern                                                                      :: parents
 der Enkel (die Enkel)                                                           :: grandson(s)
@@ -430,7 +429,8 @@ die Tante (die Tanten)                                                          
 die Tochter (die Töchter)                                                       :: daughter(s)
 der Vater (die Väter)                                                           :: father
 der Vetter (die Vettern)                                                        :: (male) cousin
-#days
+
+$Kapitel 3 Tage
 Montag                                                                          :: Monday
 am Montag                                                                       :: on Monday
 Dienstag                                                                        :: Tuesday
@@ -439,10 +439,12 @@ Donnerstag                                                                      
 Freitag                                                                         :: Friday
 Samstag                                                                         :: Saturday
 Sonntag                                                                         :: Sunday
-#greetings
+
+$Kapitel 3 Greetings
 Alles Gute!                                                                     :: All the best!
 Herzlichen Glückwunsch zum Geburtstag!                                          :: Happy Birthday!
-#months
+
+$Kapitel 3 Monate
 der Monat(e)                                                                    :: Month(s)
 der Januar                                                                      :: January
 im Januar                                                                       :: in January
@@ -457,7 +459,8 @@ September                                                                       
 Oktober                                                                         :: October
 November                                                                        :: November
 Dezember                                                                        :: December
-#holidays
+
+$Kapitel 3 Feiertage
 Feiertage                                                                       :: Holidays
 das Familienfest (-e)                                                           :: family gathering
 das Geschenk (-e)                                                               :: gift;present
@@ -473,7 +476,8 @@ die Tradition (-en)                                                             
 der Valentinstag                                                                :: Valentines Day
 das Weihnachten                                                                 :: Christmas
 der Weihnachtsbaum (e)                                                          :: Christmas tree (s)
-#Verbs
+
+$Kapitel 3 Verben
 feiern                                                                          :: to celebrate
 geben (du gibst, er/sie/es gibt)                                                :: to give
 gratulieren                                                                     :: to congratulate
@@ -489,7 +493,8 @@ nämlich                                                                        
 neu                                                                             :: new
 verwandt mit                                                                    :: related to
 wichtig                                                                         :: important
-#Numbers
+
+$Kapitel 3 Nummer
 erste                                                                           :: first
 der erste Mai                                                                   :: May first
 am ersten Mai                                                                   :: on May first
@@ -507,7 +512,7 @@ zwölfte                                                                        
 dreizehnte                                                                      :: thirteenth
 zwanzigste                                                                      :: twentieth
 
-#owning pronouns
+$Kapitel 3 Possessive Pronouns
 mein(e)                                                                         :: my
 dein(e)                                                                         :: your (inf)
 sein(e)                                                                         :: his; its
@@ -516,13 +521,14 @@ unser(e)                                                                        
 euer(e)                                                                         :: yalls (inf)
 Ihr(e)                                                                          :: yalls (f)
 
-#akk prepositions
+$Kapitel 3 Akkusative prepositions
 durch                                                                           :: through
 für                                                                             :: for
 gegen                                                                           :: against; around (a time)
 ohne                                                                            :: without
 um                                                                              :: at (a time)
 
+$Kapitel 3 Akkusative Pronouns
 mich                                                                            :: me (akk)
 dich                                                                            :: you (inf akk)
 ihn                                                                             :: him; it (akk)
@@ -531,7 +537,8 @@ es                                                                              
 uns                                                                             :: us (akk)
 euch                                                                            :: y'all (inf akk)
 Sie                                                                             :: y'all (f akk)
-#others
+
+$Kapitel 3 Extras
 es gibt                                                                         :: there is, there are
 Es tut mir leid.                                                                :: Im sorry.
 der Hund (-e)                                                                   :: dog
@@ -540,3 +547,83 @@ Wann hast du Geburtstag?                                                        
 Welches Datum ist heute/morgen?                                                 :: What is today's/tomorrow's date?
 können                                                                          ::  to know how to/to be able to
 Tag der Deutschen Einheit                                                       :: Day of German Unity
+
+$Kapitel 4
+der Morgen                                :: morning
+der Vormittag                             :: morning; before noon
+der Mittag                                :: noon
+der Nachmittag                            :: afternoon
+der Abend                                 :: evening
+die Nacht                                 :: night
+morgen früh                               :: tomorrow morning
+morgen                                    :: tomorrow
+das Ballett (Ballette)                    :: ballet
+die Disco (Discos), in die Disco gehen    :: disco; dance club, to go clubbing
+das Fernsehen                             :: watching TV
+der Film (Filme)                          :: film
+das Kino (Kinos), ins Kino gehen          :: cinema; (movie) theatre , to go to the movies
+die Komödie (Komödien)                    :: comedy
+das Konzert (Konzerte), ins Konzert gehen :: concert, to go to a concert
+der Krimi (Krimis)                        :: crime; detective; mystery film or book
+die Oper (Opern), in die Oper gehen       :: opera, to go to an opera
+das Theater , ins Theater gehen           :: (stage) theater, to go to the theater
+das Theaterstück (Theaterstücke)          :: play; (stage) drama
+die Tragödie (Tragödien)                  :: tragedy
+ab*holen                                  :: to pick up (form a place)
+an*fangen (fängt an)                      :: to begin
+an*rufen                                  :: to call (up)
+auf*räumen                                :: to clean up; straighten up
+auf*stehen                                :: to get up/stand up
+auf*wachen                                :: to wake up
+aus*gehen                                 :: to go out
+ein*kaufen (gehen)                        :: to shop (go shopping)
+ein*laden (lädt ein)                      :: to invite
+ein*schlafen (schläft ein)                :: to fall asleep
+fern*sehen (sieht fern)                   :: to watch television
+mit*kommen                                :: to come along
+vorbei*kommen                             :: to come by
+vor*haben (hat vor)                       :: to plan (to do)
+zu*hören                                  :: to listen
+zurück*kommen                             :: to return; come back
+dürfen                                    :: to be permitted to; may
+können                                    :: to be able to; can
+mögen                                     :: to care for; to like
+müssen                                    :: to have to; must
+sollen                                    :: to be supposed to; ought; should
+wollen                                    :: to want to; to plan to
+die Minute (Minuten)                      :: minute
+die Sekunde (Sekunden)                    :: second
+die Stunde (Stunden)                      :: hour
+Um wie viel Uhr?                          :: At what time?
+Wie spät ist es? / Wie viel Uhr ist es?   :: What time is it?
+Es ist eins. / Es ist ein Uhr.            :: It's one o'clock
+halb: halb zwei                           :: half: half past one, one thirty
+nach: fünf nach zwei                      :: after: five after two
+um: um zwei                               :: at: at two
+Viertel: Es ist Viertel nach/vor zwei.    :: quarter: it's a quarter after/to two
+vor: fünf vor zwei                        :: to; of: five to two
+frühstücken                               :: to eat breakfast
+spazieren gehen                           :: to go for a walk
+treffen                                   :: to meet
+die Bibliothek (Bibliotheken)             :: library
+das Fitnesscenter                         :: gym
+der Plan (Pläne)                          :: plan
+die Tasse (Tassen), eine Tasse Kaffee     :: cup, a cup of coffee
+die Vorlesung (Vorlesungen)               :: (university) lecture
+der Vortrag (Vorträge)                    :: lecture
+die Woche (Wochen), pro Woche             :: week, per week
+das Wochenende (Wochenenden)              :: weekend
+am liebsten: möchte am liebsten           :: would like to (do) most
+doch                                      :: (intensifying particle often used with imperatives)
+früh                                      :: early
+gemütlich                                 :: cozy; cozily
+gewöhnlich                                :: usual(ly)
+lieber: möchte lieber                     :: would rather
+mal                                       :: (softening particle often used with imperatives)
+man, Hier darf man nicht parken.          :: one; people; you; they, You may not park here.
+spannend                                  :: suspenseful, exciting
+spät                                      :: late
+möchten                                   :: would like to
+verbringen                                :: to spend time
+lang, länger                              :: long, longer
+seit                                      :: since
