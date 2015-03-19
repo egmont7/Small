@@ -11,10 +11,13 @@ def main(args):
     soup = bs4.BeautifulSoup(r.text)
     EN = soup.findAll(class_ = 'qDef lang-en')
     DE = soup.findAll(class_ = 'qWord lang-de')
+    if len(EN) == 0: #Try reverse
+        EN = soup.findAll(class_ = 'qWord lang-en')
+        DE = soup.findAll(class_ = 'qDef lang-de')
     pairs = [(d.text, e.text) for d, e in zip(DE,EN)]
     with open(out_file_name,'w') as f:
         for en, de in pairs:
-            f.write("{}   ::   {}\n".format(en, de))
+            f.write("{}   ::   {}\n".format(en.replace('\n',', '), de.replace('\n',', ')))
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
