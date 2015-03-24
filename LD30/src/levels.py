@@ -19,8 +19,7 @@ class Level:
                         "DT":             0.0001,  # Time Step
                         "THETA":          2,       # Barnes-Hutt cutoff param
                         "RESTITUTION":    1,       # elastic collision param
-                        "PLAYER_DAMP":    0.85
-                        }
+                        "PLAYER_DAMP":    0.85}
 
     def getBodies(self):
         raise NotImplementedError()

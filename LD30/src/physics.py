@@ -6,9 +6,7 @@ Created on Aug 24, 2014
 
 from utils import Vector, Sprite, Body, SafeZone, Player, Card
 
-
 G = 1
-
 SPEED_LIMIT = 1
 OVERSPEED_DAMP = 0.9
 NORMAL_DAMP = 0.99
@@ -17,84 +15,69 @@ DT = 0.01
 THETA = 8
 RESTITUTION = 1
 
+
 def configure_physics(phys_params):
-    global G
-    global SPEED_LIMIT
-    global OVERSPEED_DAMP
-    global NORMAL_DAMP
-    global DT
-    global THETA
-    global RESTITUTION
-    global PLAYER_DAMP
+    global G, SPEED_LIMIT, OVERSPEED_DAMP, NORMAL_DAMP,\
+           DT, THETA, RESTITUTION, PLAYER_DAMP
 
     G = phys_params['G']
     SPEED_LIMIT = phys_params['SPEED_LIMIT']
     OVERSPEED_DAMP = phys_params['OVERSPEED_DAMP']
     NORMAL_DAMP = phys_params['NORMAL_DAMP']
-    DT  = phys_params['DT']
+    DT = phys_params['DT']
     THETA = phys_params['THETA']
     RESTITUTION = phys_params['RESTITUTION']
     PLAYER_DAMP = phys_params['PLAYER_DAMP']
 
+
 def collide_body_body(b1, b2):
-    delta = b1.pos - b2.pos;
+    delta = b1.pos - b2.pos
     d = Vector.Length(delta)
-    #Minimum translation distance to push balls apart after intersecting
+
     mtd = delta * ((b1.rad + b2.rad)-d)/d
 
-    #Resolve intersection --
-    #Inverse mass quantities
     im1 = 1 / b1.mass
     im2 = 1 / b2.mass
 
-    #push-pull them apart based off their mass
     b1.pos = b1.pos + mtd * (im1 / (im1 + im2))
     b2.pos = b2.pos - mtd * (im2 / (im1 + im2))
 
-
-    #Impact speed
     v = b1.vel - b2.vel
     vn = Vector.Dot(v, Vector.Normalize(mtd))
 
-    #Sphere intersecting but moving away from each other already
     if vn > 0:
         return
-    #Collision impulse
     i = (-(1 + RESTITUTION) * vn) / (im1 + im2)
     impulse = Vector.Normalize(mtd) * i
 
-    #Change in momentum
     b1.vel = b1.vel + impulse*im1
     b2.vel = b2.vel - impulse*im2
 
+
 def collide_body_static_body(b, sb):
-    delta = b.pos - sb.pos;
+    delta = b.pos - sb.pos
     d = Vector.Length(delta)
-    #Minimum translation distance to push balls apart after intersecting
     mtd = delta * ((b.rad + sb.rad)-d)/d
 
-    #Resolve intersection --
-    #push-pull them apart based off their mass
     b.pos = b.pos + mtd
 
-    #Impact speed
     vn = Vector.Dot(b.vel, Vector.Normalize(mtd))
 
-    #Sphere intersecting but moving away from each other already
     if vn > 0:
         return
-    #Change in Velocity
     i = -(1 + RESTITUTION) * vn
     b.vel += Vector.Normalize(mtd) * i
 
-def collide_body_player(b,p):
+
+def collide_body_player(b, p):
     p.touching.append(b)
+
 
 def collide(a, b):
     ta = type(a)
     tb = type(b)
     if ta == Body and tb == Body:
-        collide_body_body(a,b)
+        collide_body_body(a, b)
     elif ta == Body and tb == SafeZone:
         collide_body_static_body(a, b)
     elif ta == SafeZone and tb == Body:
@@ -108,7 +91,7 @@ def collide(a, b):
     elif ta == SafeZone and tb == Player:
         b.inSafe = True
     else:
-        print("AAAAH I CANT COLLIDE THIS!!!!{} {}".format(ta,tb))
+        print("AAAAH I CANT COLLIDE THIS!!!!{} {}".format(ta, tb))
 
 
 def update_player_physics(player):
@@ -116,10 +99,11 @@ def update_player_physics(player):
     player.vel += player.dir * player.power * DT
     player.vel *= PLAYER_DAMP
 
+
 class QuadTree:
 
     class QuadTreeNode:
-        def __init__(self, parent = None, size = 0, pos = Vector(0,0)):
+        def __init__(self, parent=None, size=0, pos=Vector(0, 0)):
             self.children = {Card.NORTHWEST: None,
                              Card.NORTHEAST: None,
                              Card.SOUTHWEST: None,
@@ -130,16 +114,18 @@ class QuadTree:
             self.pos = pos
 
             self.total_mass = 0
-            self.center_of_mass = Vector(0,0)
+            self.center_of_mass = Vector(0, 0)
 
         def insert(self, body):
             card = Card.get_card(self.pos, body.pos)
-            self.center_of_mass = (self.center_of_mass*self.total_mass + body.pos*body.mass) / (self.total_mass + body.mass)
+            self.center_of_mass = (self.center_of_mass*self.total_mass +
+                                   body.pos*body.mass) / (self.total_mass +
+                                                          body.mass)
             self.total_mass += body.mass
             if self.children[card] == None:
                 self.children[card] = body
             elif isinstance(self.children[card], Sprite):
-                child_pos = QuadTree.getChildPos(card, self.pos, self.size)
+                child_pos = QuadTree.get_child_pos(card, self.pos, self.size)
                 qt = QuadTree.QuadTreeNode(self, self.size/2, child_pos)
                 if self.children[card].pos == body.pos:
                     body.pos.x += 0.001
@@ -155,13 +141,12 @@ class QuadTree:
         for e in entities:
             self.insert(e)
 
-
     def insert(self, entity):
         if self.root is None:
             self.root = entity
         elif isinstance(self.root, Sprite):
             e = self.root
-            self.root = QuadTree.QuadTreeNode(size = 1., pos = Vector(0.5,0.5))
+            self.root = QuadTree.QuadTreeNode(size=1., pos=Vector(0.5, 0.5))
             self.root.insert(e)
             self.root.insert(entity)
         else:
@@ -196,18 +181,23 @@ class QuadTree:
 
     def physicsStep(self, entity):
         force = Vector()
-        if not isinstance(self.root,Sprite):
+        if not isinstance(self.root, Sprite):
             stack = [self.root]
             while len(stack) > 0:
                 curr = stack.pop()
-                if curr.size/Vector.Distance(curr.center_of_mass, entity.pos) < THETA:
-                    force += QuadTree.calcForce(curr.center_of_mass, entity.pos, curr.total_mass, entity.mass)
+                d = curr.size/Vector.Distance(curr.center_of_mass, entity.pos)
+                if d < THETA:
+                    force += QuadTree.calc_force(curr.center_of_mass,
+                                                 entity.pos,
+                                                 curr.total_mass,
+                                                 entity.mass)
                 else:
                     for c in curr.children.values():
                         if c is None or c is entity:
                             continue
-                        elif isinstance(c,Sprite):
-                            force += QuadTree.calcForce(c.pos, entity.pos, c.mass, entity.mass)
+                        elif isinstance(c, Sprite):
+                            force += QuadTree.calc_force(c.pos, entity.pos,
+                                                         c.mass, entity.mass)
                         else:
                             stack.append(c)
         entity.pos = entity.pos + entity.vel * DT
@@ -218,13 +208,13 @@ class QuadTree:
             entity.vel *= NORMAL_DAMP
 
     @staticmethod
-    def calcForce(pos1, pos2, mass1, mass2):
-        f = (pos1 - pos2) / Vector.Distance(pos1, pos2)**3
-        f = f*mass1*mass2 * G
-        return f
+    def calc_force(pos1, pos2, mass1, mass2):
+        force = (pos1 - pos2) / Vector.Distance(pos1, pos2)**3
+        force *= mass1*mass2 * G
+        return force
 
     @staticmethod
-    def getChildPos(card, pos, size):
+    def get_child_pos(card, pos, size):
         quarter_size = size/4
         if card == Card.NORTHWEST:
             return Vector(pos.x - quarter_size, pos.y - quarter_size)
@@ -232,6 +222,5 @@ class QuadTree:
             return Vector(pos.x + quarter_size, pos.y - quarter_size)
         elif card == Card.SOUTHWEST:
             return Vector(pos.x - quarter_size, pos.y + quarter_size)
-        else: #Card.SOUTHEAST
+        else:  # Card.SOUTHEAST
             return Vector(pos.x + quarter_size, pos.y + quarter_size)
-

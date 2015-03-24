@@ -7,11 +7,13 @@ from itertools import combinations
 from utils import Vector, Body, Player
 import physics
 
+
 class Boundary:
     def __init__(self, type_, position, obj):
         self.type_ = type_
         self.position = position
         self.obj = obj
+
 
 class RDC:
     def __init__(self, entities):
@@ -40,7 +42,7 @@ class RDC:
                 boundaries.append(Boundary('c', getattr(obj, axis[1])(), obj))
 
             # sort our list of all boundaries on position
-            boundaries.sort( key = lambda x: x.position)
+            boundaries.sort(key=lambda x: x.position)
 
             # finally, make new chunks out of our existing collection
             for i in range(len(boundaries)):
@@ -58,7 +60,8 @@ class RDC:
                     if count == 0:
                         newclusters.append(group)
                         group = []
-                        # if we're not at the very end of our array then we've just made a new subdivision
+                        # if we're not at the very end of our array then
+                        # we've just made a new subdivision
                         if i != len(boundaries) - 1:
                             self.divided = True
 
@@ -76,7 +79,6 @@ class RDC:
     def DoRDC(self):
         groups = self.FindGroups(self.entities)
         for g in range(len(groups)):
-            # Do collision callbacks - test each entity against others in their group
             self.BruteForceCircles(groups[g])
         for e in self.entities:
             if isinstance(e, Body):
@@ -107,8 +109,7 @@ class RDC:
                     e.pos.y = e.rad
 
     def BruteForceCircles(self, group):
-        for a, b in combinations(group,2):
+        for a, b in combinations(group, 2):
             collided = Vector.Distance(a.pos, b.pos) < (a.rad + b.rad)
             if collided:
-                physics.collide(a,b)
-        
+                physics.collide(a, b)
