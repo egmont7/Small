@@ -54,5 +54,6 @@ docs/_build/
 target/
 
 
-#vim swap file
+#vim local files
 *.swp
+*.un~
