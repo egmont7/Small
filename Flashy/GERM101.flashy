@@ -569,6 +569,7 @@ die Oper (Opern), in die Oper gehen       :: opera, to go to an opera
 das Theater , ins Theater gehen           :: (stage) theater, to go to the theater
 das Theaterstück (Theaterstücke)          :: play; (stage) drama
 die Tragödie (Tragödien)                  :: tragedy
+
 $Kapitel 4 Separable Verbs
 ab*holen                                  :: to pick up (form a place)
 an*fangen (fängt an)                      :: to begin
@@ -586,6 +587,7 @@ vorbei*kommen                             :: to come by
 vor*haben (hat vor)                       :: to plan (to do)
 zu*hören                                  :: to listen
 zurück*kommen                             :: to return; come back
+
 $Kapitel 4 Modal Verbs
 dürfen                                    :: to be permitted to; may
 können                                    :: to be able to; can
@@ -593,17 +595,19 @@ mögen                                     :: to care for; to like
 müssen                                    :: to have to; must
 sollen                                    :: to be supposed to; ought; should
 wollen                                    :: to want to; to plan to
+
 $Kapitel 4 Time
 die Minute (Minuten)                      :: minute
 die Sekunde (Sekunden)                    :: second
 die Stunde (Stunden)                      :: hour
 Um wie viel Uhr?                          :: At what time?
-Wie viel Uhr ist es?   :: What time is it?
+Wie viel Uhr ist es?                      :: What time is it?
 halb: halb zwei                           :: half: half past one, one thirty
 nach: fünf nach zwei                      :: after: five after two
 um: um zwei                               :: at: at two
 Viertel    :: quarter
 vor: fünf vor zwei                        :: to; of: five to two
+
 $Kapitel 4 Other
 frühstücken                               :: to eat breakfast
 spazieren gehen                           :: to go for a walk
@@ -630,3 +634,117 @@ möchten                                   :: would like to
 verbringen                                :: to spend time
 lang, länger                              :: long, longer
 seit                                      :: since
+
+$Kapitel 5 Food
+der Apfel           :: apple
+die Banane          :: banana
+das Bier            :: beer
+der Brokkoli        :: broccoli
+der Blumenkohl      :: cauliflower
+das Brot            :: bread
+das Brötchen        :: roll
+die Butter          :: butter
+das Ei              :: egg
+das Eis             :: ice cream
+die Erdbeere        :: strawberry
+das Fleisch         :: meat
+die Gurke           :: cucumber
+das Gemüse          :: vegetables
+das Getränk         :: drink
+das Hähnchen        :: chicken
+der Joghurt         :: yogurt
+die Karotte         :: carrot
+die Kartoffel       :: potato
+der Käse            :: cheese
+der Keks            :: cookie
+der Kuchen          :: cake
+die Milch           :: milk
+das Müsli           :: granola; cereal
+das Obst            :: fruit
+der Pfeffer         :: pepper
+das Rindfleisch     :: beef
+der Saft            :: juice
+das Salz            :: salt
+der Schinken        :: ham
+das Schnitzel       :: cutlet
+das Schweinefleisch :: pork
+der Tee             :: tea
+die Tomate          :: tomato
+die Traube          :: grape
+der Truthahn        :: turkey
+das Wasser          :: water
+die Wurst           :: sausage
+der Zucker          :: sugar
+der Aufschnitt      :: cold cuts
+
+$Kapitel 5 Stores/Shopes
+die Apotheke             :: pharmacy
+die Bäckerei             :: bakery
+die Drogerie             :: drugstore, toiletries and sundries store
+die Konditorei           :: pastry shop
+der Laden                :: store
+der Bioladen             :: natural foods store
+der Getränkeladen        :: beverage store
+der Markt                :: market
+die Metzgerei            :: butcher shop
+der Obst und Gemüsestand :: fruit and vegetable stand
+der Supermarkt           :: supermarket
+
+$Kapitel 5 Clothes
+die Aktentasche                                    :: the briefcase
+der Anzug                                          :: the suit
+das Armband                                        :: the bracelet
+die Armbanduhr                                     :: the wrist watch
+der Badeanzug                                      :: the bathing suit
+die Badehose                                       :: the swimming trunks
+der Büstenhalter (BH)                              :: the bra
+der Bikini                                         :: the bikini
+die Bluse                                          :: the blouse
+das Dirndl                                         :: the dirndl
+der Gummistiefel                                   :: the rubber boot / wellington
+die Halskette                                      :: the necklace
+der Handschuh                                      :: the glove
+die Handtasche                                     :: the handbag
+der Hausschuh                                      :: the slippers
+das Hemd                                           :: the shirt
+die Hose                                           :: the trousers / pants
+der Hut                                            :: the hat
+die Jacke                                          :: the jacket
+die Jeans (nur Pl.)                                :: the jeans
+die Kappe                                          :: the cap
+das Kleid                                          :: the dress
+die Kleidung                                       :: the clothes
+die kurze Hose                                     :: the shorts
+der Laufschuh                                      :: the running shoe
+die Lederhose                                      :: the leather trouser / leather pants
+die Leggings (nur Pl.)                             :: the leggings
+der Mantel                                         :: the coat
+die Mütze                                          :: the hat / tuque
+der Ohrring                                        :: the ear ring
+das Portmonnaie                                    :: the wallet
+der Pullover                                       :: the pullover
+die Regenjacke                                     :: the raincoat
+der Rock                                           :: the skirt
+der Schal                                          :: the scarf
+der Schmuck                                        :: the jewelry
+der Schuh                                          :: the shoe
+die Socke                                          :: the sock
+der Stiefel                                        :: the boot
+der Stöckelschuh                                   :: the high heel shoe
+die Strickjacke                                    :: the cardigan
+das Sweatshirt                                     :: the sweatshirt
+das T-Shirt                                        :: the t-shirt
+die Tracht                                         :: the traditional costume
+die Umkleidekabine                                 :: the changing room / fitting room
+die Unterhose                                      :: the undewear / underpants
+der Wanderstiefel                                  :: the hiking boot
+die Weste, das Gilet                               :: the vest
+der Winterstiefel                                  :: the winter boot
+sich anziehen, "Ich ziehe mich an."                :: to dress oneself, "I'm getting dressed."
+sich ausziehen, "Ich ziehe mich aus."              :: to undress oneself, "I'm getting undressed."
+sich umziehen, "Ich ziehe mich um."                :: to change one's clothes, "I'm getting changed."
+bügeln, "Ich bügle mein Hemd."                     :: to iron, "I'm ironing my shirt."
+die Wäsche waschen, "Ich muss die Wäsche waschen." :: "to do laundry ""I must do the laundry."""
+die Wäsche                                         :: the laundry
+die Krawatte                                       :: the tie
+die Fliege                                         :: the bow tie
