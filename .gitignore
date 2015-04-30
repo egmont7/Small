@@ -57,3 +57,4 @@ target/
 #vim local files
 *.swp
 *.un~
+Session.vim
