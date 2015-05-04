@@ -1,18 +1,25 @@
 #Define Device Name
 dev step_curve
+
 #Define Signals
-sig CAL
-sig SBI
-sig SPHI1
-sig SPHI2
-sig SEB
-sig ISSR
-sig RESET
-sig R12
-sig RBI
-sig RPHI1
-sig RPHI2
-sig LE
+reg CAL
+reg SBI
+reg SPHI1
+reg SPHI2
+reg SEB
+reg internal ISSR   #internal signal, not routed to output
+reg RESET
+reg R12
+reg RBI
+reg RPHI1
+reg RPHI2
+reg LE
+
+# wire output, rhs is hdl expression(ands/ors/xors etc.)
+wire IS1 : ISSR & CAL
+wire IS2 : ISSR
+wire SR  : ISSR
+wire CS  : 1
 
 
 #Define Patterns
