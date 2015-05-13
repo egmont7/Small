@@ -1,54 +1,62 @@
+
 #Define Device Name
 dev step_curve_short
+
 #Define Signals
 reg CAL    #1
-reg SBI    #2
 reg SPHI1  #3
 reg SPHI2  #4
-reg SEB    #5
-reg IS1    #6
-reg IS2    #7
-reg SR     #8
 reg RESET  #9
-reg R12    #10
 reg RBI    #11
 reg RPHI1  #12
 reg RPHI2  #13
 reg LE     #14
 
-wire CS: 1
+wire CS: 0
+wire SBI: 0
+wire SEB: 1
+wire R12: 0
+wire IS1: 1
+wire IS2: 0
+wire SR: 1
+
+#Analog voltage defaults
+wire Vthr: 16'H0025
+wire Aref: 16'H0033
+wire Vana: 16'H0066
+wire RG:   16'H0033
 
 #Define Patterns
 
 stage A 1 #Setup
-CAL   : _----------- __________ _______
-SBI   : ____________ __________ _______
-SPHI1 : ____---_____ __________ _______
-SPHI2 : ____---_____ __________ _______
-SEB   : ------------ ---------- -------
-IS1   : ------------ ---------- -------
-IS2   : ____________ __________ _______
-SR    : ------------ ---------- -------
-RESET : --__________ _____----- -------
-R12   : ------------ ---------- -------
-RBI   : ------------ --------__ ___-___
-RPHI1 : ------------ ---------- ___-___
-RPHI2 : ------------ ---------- _____-_
-LE    : ------------ ---_______ _______
+CAL   : ---------- __________ _______
+SPHI1 : __---_____ __________ _______
+SPHI2 : __---_____ __________ _______
+RESET : __________ ___------- -------
+RBI   : ---------- -----_____ _---___
+RPHI1 : ---------- ---------_ __-____
+RPHI2 : ---------- ---------_ _____-_
+LE    : ---------- -_________ ____---
 
 
 stage B 129
 CAL   : ____
-SBI   : ____
 SPHI1 : ____
 SPHI2 : ____
-SEB   : ----
-IS1   : ----
-IS2   : ____
-SR    : ----
 RESET : ----
-R12   : ----
 RBI   : ____
 RPHI1 : -___
 RPHI2 : __-_
 LE    : ----
+
+
+stage C 1
+CAL   : _---
+SPHI1 : ____
+SPHI2 : ____
+RESET : ---_
+RBI   : ____
+RPHI1 : ____
+RPHI2 : ____
+LE    : ----
+
