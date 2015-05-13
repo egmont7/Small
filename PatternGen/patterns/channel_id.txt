@@ -1,0 +1,55 @@
+#Define Device Name
+dev channel_id
+#Define Signals
+reg CAL    #1
+reg SBI    #2
+reg SPHI1  #3
+reg SPHI2  #4
+reg SEB    #5
+reg IS1    #6
+reg IS2    #7
+reg SR     #8
+reg RESET  #9
+reg R12    #10
+reg RBI    #11
+reg RPHI1  #12
+reg RPHI2  #13
+reg LE     #14
+
+wire CS: 0
+
+#Define Patterns
+
+stage A 1 #Setup
+CAL   : -___- ___-
+SBI   : -___- __-_
+SPHI1 : -___- __--
+SPHI2 : -___- _-__
+SEB   : -___- _-_-
+IS1   : -___- _--_
+IS2   : -___- _---
+SR    : -___- -___
+RESET : -___- -__-
+R12   : -___- -_-_
+RBI   : -___- -_--
+RPHI1 : -___- --__
+RPHI2 : -___- --_-
+LE    : -___- ----
+
+
+
+stage B 50
+CAL   : ____
+SBI   : ____
+SPHI1 : ____
+SPHI2 : ____
+SEB   : ____
+IS1   : ____
+IS2   : ____
+SR    : ____
+RESET : ____
+R12   : ____
+RBI   : ____
+RPHI1 : ____
+RPHI2 : ____
+LE    : ____

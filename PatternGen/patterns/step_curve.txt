@@ -7,7 +7,7 @@ reg SBI
 reg SPHI1
 reg SPHI2
 reg SEB
-reg internal ISSR   #internal signal, not routed to output
+reg internal ISSR   #internal signal pattern, not routed to output
 reg RESET
 reg R12
 reg RBI
@@ -16,7 +16,7 @@ reg RPHI2
 reg LE
 
 # wire output, rhs is hdl expression(ands/ors/xors etc.)
-wire IS1 : ISSR & CAL
+wire IS1 : ISSR
 wire IS2 : ISSR
 wire SR  : ISSR
 wire CS  : 1
