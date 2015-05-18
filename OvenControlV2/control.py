@@ -6,28 +6,39 @@ import time
 import logging
 import random
 from collections import deque
+
 import matplotlib
 matplotlib.use("Qt5Agg")
-import seaborn
 from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
+from matplotlib import rcParams
+
+try:
+    import seaborn as sns
+    sns.set()
+except ImportError as e:
+    logging.warning("Couldn't Import Seaborn. Graphs will be less pretty. :(")
 
 import PyQt5
-from PyQt5.QtWidgets import (QMainWindow, QFrame, QDesktopWidget,
+from PyQt5.QtWidgets import (QMainWindow, QDesktopWidget,
                              QApplication, QWidget, QPushButton,
-                             QVBoxLayout, QHBoxLayout, QGridLayout,
-                             QLabel, QListWidget, QListWidgetItem, QSplitter)
-from PyQt5.QtCore import Qt, QBasicTimer, pyqtSignal
+                             QVBoxLayout, QGridLayout, QLabel,
+                             QListWidget, QListWidgetItem, QSplitter)
+from PyQt5.QtCore import QBasicTimer
 
 
 VIRTUAL_HARDWARE = True
 SAMPLE_PERIOD_SECONDS = .5 #seconds
 SAMPLE_HISTORY_SIZE = 50
 TEMP_ERROR_THRESHOLD = 10
+
 random.seed("DEADBEEF")
 logging.basicConfig(filename="OvenControlV2.log", filemode='w',
                     format='%(levelname)s::%(asctime)s %(message)s',
                     level=logging.INFO)
+rcParams.update({'figure.autolayout': True,
+                 'text.usetex': True,
+                 'font.size': 8})
 
 
 class DynamicPlot(FigureCanvas):
@@ -35,12 +46,10 @@ class DynamicPlot(FigureCanvas):
     def __init__(self, parent=None, width=5, height=4, dpi=100,
                  n_plots=1, n_data = 10, labels=None,
                  x_range=(0,10),y_range=(0,50),
-                 title="", xlabel="", ylabel=""):
+                 title="", x_label="", y_label=""):
         self.fig = Figure()
         self.axes = self.fig.add_subplot(111)
         self.title = title
-        self.xlabel = xlabel
-        self.ylabel = ylabel
         self.x_range = x_range
         self.y_range = y_range
         self.n_plots = n_plots
@@ -58,8 +67,8 @@ class DynamicPlot(FigureCanvas):
         self.axes.set_xlim(x_range)
         self.axes.set_ylim(y_range)
         self.axes.set_title(self.title)
-        self.axes.set_xlabel(self.xlabel)
-        self.axes.set_ylabel(self.ylabel)
+        self.axes.set_xlabel(x_label)
+        self.axes.set_ylabel(y_label)
         self.axes.legend()
         self.fig.canvas.draw()
 
@@ -77,6 +86,8 @@ class DynamicPlot(FigureCanvas):
 class OvenController(QMainWindow):
 
     def __init__(self):
+        logging.info("Application startin up")
+        self.turn_oven_off()
         super().__init__()
         self.gui_init()
         self.temperature_current = 50
@@ -123,10 +134,12 @@ class OvenController(QMainWindow):
         self.preview_cycle_graph = DynamicPlot(n_plots=1, n_data=SAMPLE_HISTORY_SIZE,
                                                labels=["preview"],
                                                x_range=(0, 10), y_range=(0, 100),
+                                               x_label="time(s)", y_label="Temperature($^\circ $C)",
                                                title="Cycle Preview")
         self.monitor_cycle_graph = DynamicPlot(n_plots=2, n_data=SAMPLE_HISTORY_SIZE,
                                                labels=["Measured", "Target"],
                                                x_range=(0, SAMPLE_HISTORY_SIZE*SAMPLE_PERIOD_SECONDS),
+                                               x_label="time(s)", y_label="Temperature($^\circ $C)",
                                                y_range=(0, 100),
                                                title="Temperature Monitor")
 
@@ -154,6 +167,7 @@ class OvenController(QMainWindow):
         self.abort_cycle_button = QPushButton("Abort Cycle")
         self.abort_cycle_button.clicked.connect(self.abort_cycle)
         self.quit_button = QPushButton("Quit")
+        self.quit_button.clicked.connect(self.close)
 
         # Control area layout
         ca = QWidget()
@@ -202,6 +216,7 @@ class OvenController(QMainWindow):
             logging.warning("Temperature too cold!")
 
     def turn_oven_on(self):
+        logging.info("Oven ON")
         if VIRTUAL_HARDWARE:
             pass
         else:
@@ -209,6 +224,7 @@ class OvenController(QMainWindow):
         self.oven_on = True
 
     def turn_oven_off(self):
+        logging.info("Oven OFF")
         if VIRTUAL_HARDWARE:
             pass
         else:
@@ -241,6 +257,10 @@ class OvenController(QMainWindow):
             self.update_ui()
         else:
             super(Board, self).timerEvent(event)
+
+    def closeEvent(self, event):
+        logging.info("Application shuttin down. Bye!")
+        self.turn_oven_off()
 
 
 if __name__ == "__main__":
