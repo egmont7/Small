@@ -1,4 +1,3 @@
-
 #Define Device Name
 dev step_curve_short
 
@@ -28,35 +27,53 @@ wire RG:   16'H0033
 
 #Define Patterns
 
-stage A 1 #Setup
-CAL   : ---------- __________ _______
-SPHI1 : __---_____ __________ _______
-SPHI2 : __---_____ __________ _______
-RESET : __________ ___------- -------
-RBI   : ---------- -----_____ _---___
-RPHI1 : ---------- ---------_ __-____
-RPHI2 : ---------- ---------_ _____-_
-LE    : ---------- -_________ ____---
+stage A1 1 #Setup
+CAL   : ----------
+SPHI1 : __---_____
+SPHI2 : __---_____
+RESET : __________
+RBI   : ----------
+RPHI1 : ----------
+RPHI2 : ----------
+LE    : ----------
 
+stage A2 variable #Delay
+CAL   : _
+SPHI1 : _
+SPHI2 : _
+RESET : _
+RBI   : -
+RPHI1 : -
+RPHI2 : -
+LE    : -
 
-stage B 129
-CAL   : ____
-SPHI1 : ____
-SPHI2 : ____
-RESET : ----
-RBI   : ____
-RPHI1 : -___
-RPHI2 : __-_
-LE    : ----
+stage A3 1  #Prepare readout
+CAL   : _________ _____
+SPHI1 : _________ _____
+SPHI2 : _________ _____
+RESET : __------- -----
+RBI   : ----_____ __--_
+RPHI1 : --------_ __-__
+RPHI2 : --------_ _____
+LE    : _________ _____
 
+stage B 127 #Readout
+CAL   : ________________________
+SPHI1 : ________________________
+SPHI2 : ________________________
+RESET : ------------------------
+RBI   : ________________________
+RPHI1 : ______________________-_
+RPHI2 : ---------------------___
+LE    : ------------------------
 
-stage C 1
-CAL   : _---
-SPHI1 : ____
-SPHI2 : ____
-RESET : ---_
-RBI   : ____
-RPHI1 : ____
-RPHI2 : ____
-LE    : ----
+stage C 300 #make sure CAL is high long enough to saturate
+CAL   : -
+SPHI1 : _
+SPHI2 : _
+RESET : -
+RBI   : _
+RPHI1 : _
+RPHI2 : _
+LE    : -
 
