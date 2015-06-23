@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
-TODO:
+  pattern_gen.py
+    pattern_gen is a utility to convert human-readable signal pattern files to
+    verilog code for use in FPGA/PLD designs. See ./patterns for examples of
+    input files.
 """
 import argparse
 import os
