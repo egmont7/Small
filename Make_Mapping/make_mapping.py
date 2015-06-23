@@ -42,23 +42,27 @@ def parse_file():
 
 def disp_maps(mappings):
     from graphviz import Digraph
+    import webbrowser
     import subprocess
 
     dot = Digraph("Mappngs!")
     nodes = set.union(*(set(mapping)
                         for mapping in mappings.keys()))
-    print(nodes)
     for node in nodes:
         dot.node(node, node)
     for mapping in mappings.values():
         dot.edge(mapping.from_, mapping.to)
 
+    dot.format = 'png'
     dot.render('graph_visual', cleanup=True)
-    subprocess.Popen(["evince graph_visual.pdf"],shell=True)
+    webbrowser.open("graph_visual.png")
+    # subprocess.Popen(["evince graph_visual.png"],shell=True)
 
 
 def main():
     mappings = parse_file()
+    if ARGS.plot:
+        disp_maps(mappings)
 
     ports = []
     for from_, to in zip(ARGS.maps[:-1], ARGS.maps[1:]):
@@ -84,6 +88,8 @@ if __name__=="__main__":
                         help="input mapping file")
     parser.add_argument("-s", "--short", action="store_true",
                         help="short output, only in/out ports")
+    parser.add_argument("-p", "--plot", action="store_true",
+                        help="shows graphviz plot of included mappings")
     parser.add_argument("maps", nargs="+",
                         help="mapping path")
     ARGS = parser.parse_args()
