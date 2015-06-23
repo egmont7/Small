@@ -26,7 +26,7 @@ def parse_file():
             if not line:
                 continue
             if line[:8].lower() == "mapping:":
-                if curr_map is not None:
+                if curr_map:
                     mappings[(curr_map.from_,curr_map.to)] = curr_map
                 from_, to = line.split()[1:]
                 curr_map = Mapping(from_=from_, to=to, map_={})
@@ -37,6 +37,9 @@ def parse_file():
             else:
                 from_, to = line.split(',')
                 curr_map.map_[from_.strip()] = to.strip()
+        if curr_map:
+            mappings[(curr_map.from_,curr_map.to)] = curr_map
+
     return mappings
 
 
@@ -52,6 +55,7 @@ def disp_maps(mappings):
         dot.node(node, node)
     for mapping in mappings.values():
         dot.edge(mapping.from_, mapping.to)
+    print(mappings.keys())
 
     dot.format = 'png'
     dot.render('graph_visual', cleanup=True)
@@ -64,6 +68,8 @@ def main():
     if ARGS.plot:
         disp_maps(mappings)
 
+    if len(ARGS.maps) == 0:
+        return
     ports = []
     for from_, to in zip(ARGS.maps[:-1], ARGS.maps[1:]):
         map_ = mappings[(from_, to)].map_
@@ -90,7 +96,7 @@ if __name__=="__main__":
                         help="short output, only in/out ports")
     parser.add_argument("-p", "--plot", action="store_true",
                         help="shows graphviz plot of included mappings")
-    parser.add_argument("maps", nargs="+",
+    parser.add_argument("maps", nargs="*", default=[],
                         help="mapping path")
     ARGS = parser.parse_args()
     main()
