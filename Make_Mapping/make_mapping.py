@@ -59,7 +59,6 @@ def disp_maps(mappings):
 
 def main():
     mappings = parse_file()
-    # disp_maps(mappings)
 
     ports = []
     for from_, to in zip(ARGS.maps[:-1], ARGS.maps[1:]):
@@ -69,7 +68,10 @@ def main():
                 ports.append([port])
         for port in ports:
             port.append(map_[port[-1]])
-        
+
+    print("Mapping for:")
+    print(" ".join(ARGS.maps))
+    print()
     for port in ports:
         if ARGS.short:
             print(' '.join([port[0],port[-1]]))
