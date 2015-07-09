@@ -58,3 +58,6 @@ target/
 *.swp
 *.un~
 Session.vim
+
+# bin/link directory
+bin/
