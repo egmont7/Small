@@ -8,12 +8,12 @@ def main(args):
     out_file_name = args.outputFile
     
     r = requests.get(url)
-    soup = bs4.BeautifulSoup(r.text)
-    EN = soup.findAll(class_ = 'qDef lang-en')
-    DE = soup.findAll(class_ = 'qWord lang-de')
+    soup = bs4.BeautifulSoup(r.text, "lxml")
+    EN = soup.findAll(class_ = 'TermText qDef lang-en')
+    DE = soup.findAll(class_ = 'TermText qWord lang-de')
     if len(EN) == 0: #Try reverse
-        EN = soup.findAll(class_ = 'qWord lang-en')
-        DE = soup.findAll(class_ = 'qDef lang-de')
+        EN = soup.findAll(class_ = 'TermText qWord lang-en')
+        DE = soup.findAll(class_ = 'TermText qDef lang-de')
     pairs = [(d.text, e.text) for d, e in zip(DE,EN)]
     with open(out_file_name,'w') as f:
         for en, de in pairs:

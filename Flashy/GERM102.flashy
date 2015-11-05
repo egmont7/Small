@@ -1,0 +1,266 @@
+#This is the Flashy card file for GERM102
+
+#==============================================================================
+$Kapitel 6
+bestellen                   :: order
+da drüben                   :: over there
+das Café                    :: café
+das Hauptgericht            :: main dish
+das Lokal                   :: restaurant, pub, bar
+das Messer                  :: Knife
+das Pilsener                :: Pilsener beer
+das Restaurant              :: restaurant
+das Wirtshaus               :: pub
+der Auflauf                 :: casserole
+der Eisbecher               :: dish of icecream
+der Imbiss                  :: fast food stand
+der Leberkäs                :: bavarian style meat loaf
+der Löffel                  :: spoon
+der Nachtisch               :: dessert
+der Ober / der Kellner      :: waiter
+der Oberin  / der Kellnerin :: waitress
+der Platz                   :: room/space
+der Ruhetag                 :: closed day
+der Schweinebraten          :: pork roast
+der Senf                    :: mustard
+der Sprudel                 :: carbonated mineral water
+die Beilage                 :: side dish
+die Bratkartoffeln          :: fried potatoes
+die Brezel                  :: pretzel
+die Gabel                   :: fork
+die Gaststätte              :: fullservice restaurant
+die Kneipe                  :: pub, bar
+die Küche                   :: cuisine, kitchen
+die Nachspeise              :: dessert
+die Sahne                   :: cream
+die Serviette               :: napkin
+die Speisekarte             :: menu
+die Suppe                   :: soup
+die Vorspeise               :: appetizer
+die Weißwurst               :: white sausage
+Entschuldigen Sie.          :: Excuse me!
+geöffnet                    :: open
+geschlossen                 :: closed
+hatte (haben)               :: had
+Hier ist besetzt.           :: This seat is taken
+hoffentlich                 :: hopefully
+Ich habe Durst.             :: I am thirsty
+Ich habe Hunger.            :: I am hungry.
+Ist hier noch frei?         :: Is this seat available?
+müssten (müssen)            :: had to
+täglich                     :: daily
+vielen Dank                 :: many thanks
+voll                        :: full
+vom Fass                    :: draft
+war (sein)                  :: was
+warten                      :: to wait
+Was bekommen Sie?           :: What will you have?
+zum Mitnehmen               :: food to-go; take-out
+
+#==============================================================================
+$Kapitel 7
+angeln                :: to fish
+bloggen               :: to blog
+Bodybuilding machen   :: to do bodybuilding, weight training
+der Brief, -e         :: letter
+die Briefmarke, -n    :: postage stamp
+faulenzen             :: to be lazy, lie around
+die Freizeit          :: free time
+der Fußball, -e       :: soccer; soccer ball
+Fußball spielen       :: to play soccer
+joggen                :: to jog
+die Karte, -n         :: card
+malen                 :: to paint
+Rad fahren            :: to bicycle
+reiten, ist geritten  :: to ride (horseback)
+sammeln               :: to collect
+Schach spielen        :: to play chess
+Schlittschuh laufen   :: to ice-skate
+segeln                :: to sail
+die Spielkarte, -n    :: playing card
+der Sport             :: sport
+Sport treiben         :: to play sports
+tauchen               :: to dive
+Tennis spielen        :: to play tennis
+(Zeit) verbringen     :: to spend (time)
+der Verein, -e        :: club, association
+der Wagen             :: car
+zeichnen              :: to draw
+das Gewitter          :: thunderstorm
+der Grad              :: degree(s)
+der Hagel             :: hail
+der Himmel            :: sky
+der Nebel             :: fog
+der Regen             :: rain
+der Regenschauer      :: rain shower
+der Regenschirm, -e   :: umbrella
+der Schnee            :: snow
+die Sonne             :: sun
+der Sonnenschein      :: sunshine
+die Temperatur, -en   :: temperature
+der Wetterbericht, -e :: weather report
+der Wind, -e          :: wind
+die Wolke, -n         :: cloud
+blitzen               :: to flash
+donnern               :: to thunder
+regnen                :: to rain
+schneien              :: to snow
+angenehm              :: pleasant
+bewölkt               :: overcast, cloudy
+heiß                  :: hot
+heiter                :: fair, bright
+kalt; kälter          :: cold; colder
+kühl                  :: cool
+kurz; kürzer          :: short; shorter
+lang; länger          :: long; longer
+neblig                :: foggy
+regnerisch            :: rainy
+schwül                :: muggy, humid
+sonnig                :: sunny
+stark; stärker        :: strong; stronger
+warm; wärmer          :: warm; warmer
+windig                :: windy
+wolkenlos             :: cloudless
+#==============================================================================
+$Kapitel 8
+der Arm, die Arme                         :: arm
+das Auge, die Augen                       :: eye
+der Bauch, die Bäuche                     :: stomach, belly
+das Bein, die Beine                       :: leg
+die Brust, die Brüste                     :: chest
+der Ell(en)bogen, die Ell(en)bogen        :: elbow
+der Finger, die Finger                    :: finger
+der Fuß, die Füße                         :: foot
+das Gesicht, die Gesichter                :: face
+das Haar, die Haare                       :: hair
+der Hals, die Hälse                       :: throat, neck
+die Hand, die Hände                       :: hand
+das Kinn, die Kinne                       :: chin
+das Knie, die Knie                        :: knee
+der Kopf, die Köpfe                       :: head
+der Mund, die Münder                      :: mouth
+der Muskel, die Muskeln                   :: muscle
+die Nase, die Nasen                       :: nose
+das Ohr, die Ohren                        :: ear
+der Rücken, die Rücken                    :: back
+die Schulter, die Schultern               :: shoulder
+die Zehe, die Zehen                       :: toe
+der Alkohol                               :: alcohol
+die Arbeit, die Arbeiten                  :: work
+der Arzt, die Ärzte                       :: male doctor
+die Ärztin, die Ärztinnen                 :: female doctor
+die Biolebensmittel (pl.)                 :: organic foods
+die Erkältung, die Erkältungen            :: cold
+das Fieber                                :: fever
+die Fitness                               :: fitness
+die Gesundheit                            :: health
+die Grippe                                :: flu
+der Husten                                :: coughing, cough
+der Krankenpfleger, die Krankenschwestern :: nurse
+der Kräutertee                            :: herbal tea
+die Luft, die Lüfte                       :: air
+der Rat                                   :: advice
+die Schmerzen (pl.)                       :: pains
+die Halsschmerzen                         :: sore throat
+die Kopfschmerzen                         :: headache
+der Schnupfen                             :: head cold
+die Sprechstunde, die Sprechstunden       :: office hours
+der Stress                                :: stress
+der Termin, die Termine                   :: appointment
+d.h., das heißt                           :: that is, i.e.
+Das macht nichts                          :: That doesn't matter
+Gute Besserung!                           :: Get well soon!
+klingen                                   :: to sound
+Du klingst so deprimiert                  :: You sound so depressed
+Mir ist schlecht                          :: I'm sick to my stomach
+Nichts zu danken                          :: No thanks necessary; Don't mention it
+So ein Pech!                              :: What a shame!
+Urlaub machen                             :: to go on vacation
+Was fehlt Ihnen/dir?                      :: What's the matter?
+zu Fuß gehen                              :: to go on foot, on a walk
+#==============================================================================
+$Kapitel 9
+die Ampel   ::   traffic light
+der Bahnhof   ::   train station
+die Bank   ::   bank
+die Fussgängerzone   ::   pedestrian zone
+der Hafen   ::   harbor, port
+das Hotel   ::   hotel
+die Innenstadt   ::   downtown
+die Jugendherberge   ::   youth hostel
+die Kirche   ::   church
+die Kreuzung   ::   intersection
+die Lage   ::   location
+das Museum   ::   museum
+der Passant   ::   passer-by
+die Pension   ::   bed and breakfast
+die Polizei   ::   police, police station
+die Post   ::   post office
+das Rathaus   ::   city hall
+das Schloss   ::   castle, palace
+der Tierpark   ::   zoo
+der Tourist   ::   tourist
+der Weg   ::   way, path; road
+das Zentrum   ::   center (of town)
+das Anmeldeformular   ::   registration form
+der Apparat   ::   set, appliance
+der Aufenthalt   ::   stay; layover
+der Aufzug   ::   elevator
+die Bettwäsche   ::   linens
+das Doppelzimmer   ::   room with two beds, double room
+die Dusche   ::   shower
+das Einzelzimmer   ::   room with one bed, single room
+das Erdgeschoss   ::   ground floor
+der Föhn   ::   hair dryer
+der Frühstücksraum   ::   breakfast room
+das Gepäck   ::   luggage
+der Internetzugang   ::   Internet access
+die Kreditkarte   ::   credit card
+der Kühlschrank   ::   refrigerator
+der Parkplatz   ::   parking space; parking lot
+der Preis   ::   price; cost
+der Reisepass   ::   passport
+die Rezeption   ::   reception desk
+der Schlüssel   ::   key
+der Stock   ::   floor, story
+die Übernachtung   ::   overnight stay
+die Unterkunft   ::   accommodation
+das WC   ::   bathroom, toilet
+bis   ::   by
+geradeaus   ::   straight ahead
+links   ::   left
+rechts   ::   right
+weit   ::   far
+die Ecke   ::   corner
+die Haltestelle   ::   bus stop
+die Mitte   ::   middle, center
+die Nähe   ::   vicinity
+abreisen   ::   to depart
+ankommen   ::   to arrive
+sich anmelden   ::   to check in, register
+ausfüllen   ::   to fill out
+sich beschweren über   ::   to complain about
+einbiegen   ::   to turn, to make a turn
+entlanggehen   ::   to walk along
+erlauben   ::   to allow, permit
+funktionieren   ::   to work, function
+reparieren   ::   to repair
+übernachten   ::   to stay overnight
+günstig   ::   favorable
+kaputt   ::   broken
+sofort   ::   immediately
+übrigens   ::   by the way
+ungefähr   ::   about, approximately
+zuerst   ::   first, at first
+ausserhalb   ::   outside of
+innerhalb   ::   inside of, within
+trotz   ::   in spite of
+während   ::   during, while
+wegen   ::   because of, on account of
+Auf welchen Namen?   ::   Under what name?
+Auf Wiederhören!   ::   Good-bye! (on telephone)
+Das tut mir leid.   ::   I'm sorry.
+Entschuldigung   ::   excuse me
+jemand nach dem Weg fragen   ::   to ask someone for directions
+Wie komme ich am besten dahin?   ::   What's the best way to get there?
+Würden Sie (bitte) ... ?   ::   Would you (please) ... ?
