@@ -61,3 +61,7 @@ Session.vim
 
 # bin/link directory
 bin/
+
+# Haskell binary objects
+*.hi
+*.o
