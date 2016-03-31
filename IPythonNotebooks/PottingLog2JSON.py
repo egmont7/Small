@@ -2,6 +2,7 @@
 
 import io
 import re
+import sys
 import json
 import zipfile
 import collections
@@ -10,8 +11,8 @@ Vec3d = collections.namedtuple("Vec3d", "x,y,z")
 Orient3d = collections.namedtuple("Orient3d", "x,y,z,q")
 
 
-def load_logfiles():
-    fullzf = zipfile.ZipFile("Potting_Logs.zip")
+def load_logfiles(full_zipfile_name):
+    fullzf = zipfile.ZipFile(full_zipfile_name)
     logs = []
     for zip_member in fullzf.filelist:
         zip_fname = zip_member.filename
@@ -123,15 +124,19 @@ def parse_modules(log):
     return list(modules.values())
 
 
-def main():
-    logs = load_logfiles()
+def main(full_zipfile_name):
+    logs = load_logfiles(full_zipfile_name)
     modules = []
     for log in logs:
         modules += parse_modules(logs[0])
 
-    enc = json.JSONEncoder(indent='  ')
+    enc = json.JSONEncoder()
     with open('Potting_Logs.json', 'w') as f:
         f.write(enc.encode(modules))
 
 if __name__ == '__main__':
-    main()
+    try:
+        fname = sys.argv[1]
+        main(fname)
+    except IndexError:
+        print("Usage: ./PottingLog2JSON PottingLogs.zip")
