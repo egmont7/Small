@@ -12,3 +12,5 @@
 	ghc -o 006/sol --make 006/sol.hs
 007/sol: 007/sol.hs
 	ghc -o 007/sol --make 007/sol.hs
+015/sol: 015/sol.hs
+	ghc -o 015/sol --make 015/sol.hs
