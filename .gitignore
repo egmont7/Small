@@ -65,3 +65,4 @@ bin/
 # Haskell binary objects
 *.hi
 *.o
+Potting Data Analysis/
