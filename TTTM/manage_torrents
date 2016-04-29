@@ -1,0 +1,254 @@
+#!/usr/bin/env python3
+
+from pathlib import Path, PurePath
+from datetime import datetime
+from pwd import getpwnam
+from enum import Enum
+import sqlite3
+import logging
+import shutil
+import re
+import os
+
+import transmissionrpc as trpc
+import feedparser
+
+
+TORRENT_PATH = Path('/Data1/Torrents/')  # Files get downloaded to here
+TV_PATH = Path('/Data1/TV/')  # Files get stored here
+DB = Path('/usr/local/etc/manage_torrents.sqlite3')
+LOG = Path('/usr/local/etc/manage_torrents.log')
+FEED_URL = ('http://showrss.info/user/52922.rss?'
+            'magnets=true&'
+            'namespaces=true&'
+            'name=clean&'
+            'quality=null&'
+            're=null')
+TRANSMISSION_HOST = ('localhost', 9091)
+VIDEO_SUFFIX = {'.mkv', '.mp4'}
+
+UID = getpwnam('caleb').pw_uid
+GID = getpwnam('caleb').pw_gid
+
+EpisodeStatus = Enum('EpisodeStatus', 'finished in_progress')
+
+logging.basicConfig(filename=str(LOG), level=logging.INFO)
+
+
+class Episode:
+
+    def __init__(self, rss_entry=None, db_row=None):
+        title_split = re.compile('(.*) (\d+)x(\d+) (.*)')
+
+        if rss_entry is not None:
+            match = title_split.findall(rss_entry['title'])[0]
+            self.show_name = match[0]
+            self.season_number = int(match[1])
+            self.episode_number = int(match[2])
+            self.episode_name = match[3]
+            self.torrent_url = rss_entry['link']
+            self.torrent_hash = None
+            self.torrent = None
+            self.datetime_started = None
+            self.status = None
+        elif db_row is not None:
+            self.show_name = db_row[0]
+            self.season_number = db_row[1]
+            self.episode_number = db_row[2]
+            self.episode_name = db_row[3]
+            self.torrent_url = db_row[4]
+            self.torrent_hash = db_row[5]
+            self.torrent = None
+            self.datetime_started = db_row[6]
+            self.status = db_row[7]
+        else:
+            self.show_name = None
+            self.season_number = None
+            self.episode_number = None
+            self.episode_name = None
+            self.torrent_url = None
+            self.torrent_hash = None
+            self.torrent = None
+            self.datetime_started = None
+            self.status = None
+
+    def __str__(self):
+        fmt = "{} S{:02d}E{:02d} - {}"
+        return fmt.format(self.show_name, self.season_number,
+                          self.episode_number, self.episode_name)
+
+
+def db_init():
+    conn = sqlite3.connect(str(DB))
+    conn.execute("""
+    CREATE TABLE IF NOT EXISTS Episode (
+              show_name TEXT,
+              season_number INTEGER,
+              episode_number INTEGER,
+              episode_name TEXT,
+              torrent_url TEXT,
+              torrent_hash TEXT,
+              datetime_started TEXT,
+              status TEXT,
+              UNIQUE(season_number, episode_number)
+                  ON CONFLICT REPLACE);
+    """)
+    return conn
+
+
+def db_put_episode(ep):
+    conn = db_init()
+    ins = ('INSERT INTO Episode ('
+           'show_name, season_number, '
+           'episode_number, episode_name, torrent_url, '
+           'torrent_hash, datetime_started, status) '
+           'VALUES (?,?,?,?,?,?,?,?);')
+    vals = (ep.show_name, ep.season_number,
+            ep.episode_number, ep.episode_name, ep.torrent_url,
+            ep.torrent_hash, ep.datetime_started, str(ep.status))
+    conn.execute(ins, vals)
+    conn.commit()
+    conn.close()
+
+
+def db_get_episodes():
+    conn = db_init()
+    query = ('SELECT show_name, season_number, '
+             'episode_number, episode_name, torrent_url, '
+             'torrent_hash, datetime_started, status '
+             'FROM Episode;')
+    rows = conn.execute(query).fetchall()
+    eps = [Episode(db_row=row) for row in rows]
+    conn.close()
+    return eps
+
+
+def db_rm_all():
+    conn = db_init()
+    conn.execute("DROP TABLE Episode;")
+    conn.commit()
+    conn.close()
+
+
+def transmission_get_torrents():
+    tc = trpc.Client(*TRANSMISSION_HOST)
+    return {t.hashString: t for t in tc.get_torrents()}
+
+
+def transmission_add_episode(episode):
+    fmt = ("Adding new torrent:\n\tShow: {}\n\tSeason: {}"
+           "\n\tEpisode{}\n\tURL: {}")
+    logging.info(fmt.format(episode.show_name, episode.season_number,
+                            episode.episode_number, episode.torrent_url))
+    tc = trpc.Client(*TRANSMISSION_HOST)
+    episode.torrent = tc.add_torrent(episode.torrent_url)
+    episode.torrent_hash = episode.torrent.hashString
+    episode.status = EpisodeStatus.in_progress
+    episode.datetime_started = str(datetime.now())
+
+
+def transmission_rm_episode(episode):
+    fmt = "Removing torrent ID:{} , {}"
+    logging.info(fmt.format(episode.torrent_hash, episode))
+    tc = trpc.Client(*TRANSMISSION_HOST)
+    tc.remove_torrent(episode.torrent.id)
+
+
+def transmission_rm_all():
+    tc = trpc.Client(*TRANSMISSION_HOST)
+    for torrent in tc.get_torrents():
+        tc.remove_torrent(torrent.id, delete_data=True)
+
+
+def feed_get_episodes():
+    feed = feedparser.parse(FEED_URL)
+    return [Episode(rss_entry=entry) for entry in feed.entries]
+
+
+def get_to_start():
+    # Returns episodes appearing in feed, but not yet in db
+    feed_eps = feed_get_episodes()
+    db_eps = {(ep.show_name, ep.season_number, ep.episode_number): ep
+              for ep in db_get_episodes()}
+    for ep in feed_eps:
+        key = (ep.show_name, ep.season_number, ep.episode_number)
+        if key not in db_eps:
+            yield ep
+
+
+def get_to_finish():
+    # Returns episodes with a current transmission status of either
+    # 'stopped' or 'seeding' which nominally correspond to finished downloads
+    trans_eps = transmission_get_torrents()
+    db_eps = {ep.torrent_hash: ep for ep in db_get_episodes()}
+    for torrent_hash, torrent in trans_eps.items():
+        state_check = torrent.status in ('stopped', 'seeding')
+        id_check = torrent_hash in db_eps
+        if state_check and id_check:
+            db_ep = db_eps[torrent_hash]
+            db_ep.torrent = torrent
+            yield db_ep
+
+
+def transfer_episode_files(episode, files):
+    show_path = TV_PATH.joinpath(episode.show_name)
+    if not show_path.is_dir():
+        fmt = "Making new directory for show: \"{}\""
+        logging.info(fmt.format(episode.show_name))
+        os.mkdir(str(show_path))
+        os.chown(str(show_path), UID, GID)
+
+    season_path = show_path.joinpath("Season {}".format(episode.season_number))
+    if not season_path.is_dir():
+        fmt = "Making new directory for season {}"
+        logging.info(fmt.format(episode.season_number))
+        os.mkdir(str(season_path))
+        os.chown(str(season_path), UID, GID)
+
+    ep_name = "{} S{:02d}E{:02d} {}".format(episode.show_name,
+                                            episode.season_number,
+                                            episode.episode_number,
+                                            episode.episode_name)
+    video_files = []
+    for file_ in files:
+        path = PurePath(file_['name'])
+        suffix = path.suffix.lower()
+        if suffix not in VIDEO_SUFFIX:
+            continue
+        size = file_['size']
+        video_files.append((size, path, suffix))
+    # Pick the largest video file to remove "sample" files
+    _, partial_path, suffix = sorted(video_files, key=lambda x: x[0])[-1]
+    torrent_file_path = TORRENT_PATH.joinpath(partial_path)
+
+    episode_path = season_path.joinpath(ep_name+suffix)
+    logging.info('Moving {} ==> {}'.format(torrent_file_path, episode_path))
+    os.rename(str(torrent_file_path), str(episode_path))
+    os.chown(str(episode_path), UID, UID)
+    torrent_dir = TORRENT_PATH.joinpath(partial_path.parts[0])
+    logging.info('Removing Directory: ', torrent_dir)
+    shutil.rmtree(str(torrent_dir))
+
+
+def finish_episode(episode):
+    files = episode.torrent.files().values()
+    transmission_rm_episode(episode)
+    transfer_episode_files(episode, files)
+    episode.status = EpisodeStatus.finished
+    db_put_episode(episode)
+
+
+def start_episode(episode):
+    transmission_add_episode(episode)
+    db_put_episode(episode)
+
+
+if __name__ == '__main__':
+    now = datetime.now()
+    fmt = "Running manage_torrents at {}."
+    logging.info(fmt.format(now))
+
+    for ep in get_to_start():
+        start_episode(ep)
+    for ep in get_to_finish():
+        finish_episode(ep)
