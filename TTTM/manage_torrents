@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-
 from pathlib import Path, PurePath
 from datetime import datetime
-from pwd import getpwnam
 from enum import Enum
+import smtplib
 import sqlite3
 import logging
 import shutil
@@ -13,22 +12,15 @@ import os
 import transmissionrpc as trpc
 import feedparser
 
+from config import UID, GID, FEED_URL, EMAIL, EMAIL_PASSWD
 
 TORRENT_PATH = Path('/Data1/Torrents/')  # Files get downloaded to here
 TV_PATH = Path('/Data1/TV/')  # Files get stored here
 DB = Path('/usr/local/etc/manage_torrents.sqlite3')
 LOG = Path('/usr/local/etc/manage_torrents.log')
-FEED_URL = ('http://showrss.info/user/52922.rss?'
-            'magnets=true&'
-            'namespaces=true&'
-            'name=clean&'
-            'quality=null&'
-            're=null')
 TRANSMISSION_HOST = ('localhost', 9091)
 VIDEO_SUFFIX = {'.mkv', '.mp4'}
 
-UID = getpwnam('caleb').pw_uid
-GID = getpwnam('caleb').pw_gid
 
 EpisodeStatus = Enum('EpisodeStatus', 'finished in_progress')
 
@@ -76,6 +68,19 @@ class Episode:
         fmt = "{} S{:02d}E{:02d} - {}"
         return fmt.format(self.show_name, self.season_number,
                           self.episode_number, self.episode_name)
+
+
+def send_notification(episode):
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(EMAIL, EMAIL_PASSWD)
+
+    msg = "\n {} S{:02d}E{:02d} {} Finished".format(episode.show_name,
+                                                    episode.season_number,
+                                                    episode.episode_number,
+                                                    episode.episode_name)
+    server.sendmail(EMAIL, EMAIL, msg)
+    server.close()
 
 
 def db_init():
@@ -136,8 +141,8 @@ def transmission_get_torrents():
 
 
 def transmission_add_episode(episode):
-    fmt = ("Adding new torrent:\n\tShow: {}\n\tSeason: {}"
-           "\n\tEpisode{}\n\tURL: {}")
+    fmt = ("Adding new torrent:\n\tShow:    {}\n\tSeason:  {}"
+           "\n\tEpisode: {}\n\tURL: {}")
     logging.info(fmt.format(episode.show_name, episode.season_number,
                             episode.episode_number, episode.torrent_url))
     tc = trpc.Client(*TRANSMISSION_HOST)
@@ -236,6 +241,7 @@ def finish_episode(episode):
     transfer_episode_files(episode, files)
     episode.status = EpisodeStatus.finished
     db_put_episode(episode)
+    send_notification(episode)
 
 
 def start_episode(episode):
