@@ -95,7 +95,7 @@ def db_init():
               torrent_hash TEXT,
               datetime_started TEXT,
               status TEXT,
-              UNIQUE(season_number, episode_number)
+              UNIQUE(show_name, season_number, episode_number)
                   ON CONFLICT REPLACE);
     """)
     return conn
