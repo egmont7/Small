@@ -1,0 +1,59 @@
+#!/usr/bin/bash
+set -e
+
+function get_pass () {
+    echo -n "Please Enter the crypt password: "
+    read -s password
+    echo
+}
+
+function do_encrypt () {
+    for filename in $(ls *.txt)
+    do
+        if [ -f $filename.gpg ]
+        then
+            rm $filename.gpg
+        fi
+        gpg -c --batch --passphrase $password $filename
+        gpg -c --batch --yes --no-tty --passphrase $password $filename
+        rm $filename
+        echo $filename ' ==> ' $filename.gpg
+    done
+}
+
+function do_decrypt () {
+    for filename in $(ls *.txt.gpg)
+    do
+        target_filename="${filename:0:-4}"
+        if [ -f $target_filename ]
+        then
+            rm $target_filename
+        fi
+        gpg -d --batch --yes --no-tty --output $target_filename --passphrase $password $filename 
+        rm $filename
+        echo $filename ' ==> ' $target_filename
+    done
+}
+
+
+if [ "$1" == '-e' ]
+then
+    echo "Encrypting files"
+    echo "================"
+    get_pass
+    do_encrypt
+    echo "Done"
+elif [ "$1" == '-d' ]
+then
+    echo "Decrypting files"
+    echo "================"
+    get_pass
+    do_decrypt
+    echo "Done"
+else
+    echo "Usage:"
+    echo "./crypt -e  , Encrypt files"
+    echo "./crypt -d  , Decrypt files"
+    exit -1
+fi
+
