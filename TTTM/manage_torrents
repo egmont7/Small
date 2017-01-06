@@ -12,12 +12,12 @@ import os
 import transmissionrpc as trpc
 import feedparser
 
-from config import UID, GID, FEED_URL, EMAIL, EMAIL_PASSWD
+from config import FEED_URL, EMAIL, EMAIL_PASSWD
 
-TORRENT_PATH = Path('/Data1/Torrents/')  # Files get downloaded to here
-TV_PATH = Path('/Data1/TV/')  # Files get stored here
-DB = Path('/usr/local/etc/manage_torrents.sqlite3')
-LOG = Path('/usr/local/etc/manage_torrents.log')
+TORRENT_PATH = Path('/home/caleb/store/Torrents/')  # Files get downloaded to here
+TV_PATH = Path('/home/caleb/store/TV/')  # Files get stored here
+DB = Path('/home/caleb/Sources/Small/TTTM/logs/manage_torrents.sqlite3')
+LOG = Path('/home/caleb/Sources/Small/TTTM/logs/manage_torrents.log')
 TRANSMISSION_HOST = ('localhost', 9091)
 VIDEO_SUFFIX = {'.mkv', '.mp4'}
 
@@ -167,7 +167,12 @@ def transmission_rm_all():
 
 def feed_get_episodes():
     feed = feedparser.parse(FEED_URL)
-    return [Episode(rss_entry=entry) for entry in feed.entries]
+    for entry in feed.entries:
+        try:
+            yield Episode(rss_entry=entry)
+        except Exception as e:
+            logging.error("Unable to parse the following episode from the rss feed: {}".format(entry))
+            logging.exception(e)
 
 
 def get_to_start():
@@ -201,14 +206,12 @@ def transfer_episode_files(episode, files):
         fmt = "Making new directory for show: \"{}\""
         logging.info(fmt.format(episode.show_name))
         os.mkdir(str(show_path))
-        os.chown(str(show_path), UID, GID)
 
     season_path = show_path.joinpath("Season {}".format(episode.season_number))
     if not season_path.is_dir():
         fmt = "Making new directory for season {}"
         logging.info(fmt.format(episode.season_number))
         os.mkdir(str(season_path))
-        os.chown(str(season_path), UID, GID)
 
     ep_name = "{} S{:02d}E{:02d} {}".format(episode.show_name,
                                             episode.season_number,
@@ -229,9 +232,8 @@ def transfer_episode_files(episode, files):
     episode_path = season_path.joinpath(ep_name+suffix)
     logging.info('Moving {} ==> {}'.format(torrent_file_path, episode_path))
     os.rename(str(torrent_file_path), str(episode_path))
-    os.chown(str(episode_path), UID, UID)
     torrent_dir = TORRENT_PATH.joinpath(partial_path.parts[0])
-    logging.info('Removing Directory: ', torrent_dir)
+    logging.info('Removing Directory: {}'.format(torrent_dir))
     shutil.rmtree(str(torrent_dir))
 
 
