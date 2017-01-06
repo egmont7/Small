@@ -34,7 +34,7 @@ class Episode:
 
         if rss_entry is not None:
             match = title_split.findall(rss_entry['title'])[0]
-            self.show_name = match[0]
+            self.show_name = match[0].replace('\'', '')
             self.season_number = int(match[1])
             self.episode_number = int(match[2])
             self.episode_name = match[3]
