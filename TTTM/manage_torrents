@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from pathlib import Path, PurePath
 from datetime import datetime
+import time
 from enum import Enum
 import smtplib
 import sqlite3
@@ -14,10 +15,10 @@ import feedparser
 
 from config import FEED_URL, EMAIL, EMAIL_PASSWD
 
-TORRENT_PATH = Path('/home/caleb/store/Torrents/')  # Files get downloaded to here
+TORRENT_PATH = Path('/var/lib/transmission/Downloads/')  # Files get downloaded to here
 TV_PATH = Path('/home/caleb/store/TV/')  # Files get stored here
-DB = Path('/home/caleb/Sources/Small/TTTM/logs/manage_torrents.sqlite3')
-LOG = Path('/home/caleb/Sources/Small/TTTM/logs/manage_torrents.log')
+DB = Path('/home/caleb/Small/TTTM/logs/manage_torrents.sqlite3')
+LOG = Path('/home/caleb/Small/TTTM/logs/manage_torrents.log')
 TRANSMISSION_HOST = ('localhost', 9091)
 VIDEO_SUFFIX = {'.mkv', '.mp4'}
 
@@ -243,20 +244,34 @@ def finish_episode(episode):
     transfer_episode_files(episode, files)
     episode.status = EpisodeStatus.finished
     db_put_episode(episode)
-    send_notification(episode)
+    # send_notification(episode)
 
 
 def start_episode(episode):
     transmission_add_episode(episode)
     db_put_episode(episode)
 
+age_cutoff = 3600*24*7  # seconds
+now = time.time()
+def rm_old_episodes(path):
+    for fname in os.listdir(path):
+        p = path.joinpath(fname)
+        if os.path.islink(p):
+            continue  # do not follow links
+        elif os.path.isdir(p):
+            rm_old_episodes(p)
+        elif os.path.isfile(p):
+            mod_time = os.stat(p).st_mtime
+            print("age: ",(now-mod_time)/3600)
+            if (now - mod_time) > age_cutoff:
+                os.remove(p)
 
 if __name__ == '__main__':
-    now = datetime.now()
     fmt = "Running manage_torrents at {}."
-    logging.info(fmt.format(now))
+    logging.info(fmt.format(datetime.now()))
 
     for ep in get_to_start():
         start_episode(ep)
     for ep in get_to_finish():
         finish_episode(ep)
+    rm_old_episodes(TV_PATH)
