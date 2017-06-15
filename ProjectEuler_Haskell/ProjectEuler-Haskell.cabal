@@ -1,0 +1,46 @@
+name:                ProjectEuler-Haskell
+version:             0.1.0.0
+-- synopsis:
+synopsis: Solutions to Project Euler Problems in Haskell
+-- description:
+description: Solutions to Project Euler Problems in Haskell
+license:             BSD3
+license-file:        LICENSE
+author:              Caleb Fangmeier
+maintainer:          caleb@fangmeier.tech
+-- copyright:
+category:            Math
+build-type:          Simple
+extra-source-files:  ChangeLog.md
+cabal-version:       >=1.10
+
+executable ProjectEuler-Haskell
+  main-is:             Main.hs
+  other-modules:       Util
+                     , Sol001
+                     , Sol002
+                     , Sol003
+                     , Sol004
+                     , Sol005
+                     , Sol006
+                     , Sol007
+                     , Sol015
+                     , Sol017
+                     , Sol018
+                     , Sol020
+                     , Sol021
+                     , Sol022
+                     , Sol023
+                     , Sol025
+                     , Sol067
+                     , Sol078
+  -- other-extensions:
+  build-depends:       base >=4.9 && <4.10
+                     , array >=0.5.1.1
+                     , containers >=0.5.7.1
+                     , combinat >=0.2.8.0
+                     , time >=1.6.0.1
+                     , optparse-applicative >= 0.14.0.0
+  ghc-options:         -O2
+  hs-source-dirs:      src
+  default-language:    Haskell2010

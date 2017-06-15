@@ -1,3 +1,5 @@
+module Sol002 (run)
+  where
 
 limit = 4000000
 fibbo :: Int -> Int -> [Int]
@@ -8,5 +10,5 @@ fibbo a b = if a < limit
 fibboSum :: Int
 fibboSum = sum [ item | item <- fibbo 1 2, even item]
 
-main :: IO()
-main = putStrLn (show fibboSum)
+run :: IO()
+run = putStrLn (show fibboSum)
