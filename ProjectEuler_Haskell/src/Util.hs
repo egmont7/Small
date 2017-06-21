@@ -1,6 +1,10 @@
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# OPTIONS_GHC -O2 #-}
 module Util (divides, factorial, fibbonacci,
              eSieve, sumOfDivisors, sumOfDivisorsPrime)
   where
+import Data.Array.Unboxed (Ix, UArray, (!), (//), array, assocs)
 
 divides :: Integral t => t -> t -> Bool
 divides d n = (n `mod` d) == 0
@@ -11,22 +15,15 @@ factorial n = product [1..n]
 fibbonacci :: Integral t => [t]
 fibbonacci = 1 : 1 : zipWith (+) fibbonacci (tail fibbonacci )
 
-sieve :: Integral t => t -> [t] -> [t]
-sieve _ [] = []
-sieve i (n:l)
-  | i `divides` n = sieve i l
-  | otherwise     = n:sieve i l
-
-
-eSieve :: Integral t => t -> [t]
-eSieve i
-  | i<=1     = []
-  | otherwise = 2:eSieve' [3,5..i]
-  where
-    eSieve' [] = []
-    eSieve' (j:l)
-      | j > i*i = j:l
-      | otherwise = j:eSieve' (sieve j l)
+-- sieve of eratosthenes
+eSieve :: forall t. (Ix t, Integral t) => t -> [t]
+eSieve m = sieve 3 (array (3,m) [(i,odd i) | i<-[3..m]] :: UArray t Bool)
+    where
+    sieve :: t -> UArray t Bool -> [t]
+    sieve p a
+       | p*p > m   = 2 : [i | (i,True) <- assocs a]
+       | a!p       = sieve (p+2) $ a//[(i,False) | i <- [p*p, p*p+2*p..m]]
+       | otherwise = sieve (p+2) a
 
 -- Repeatedly divide n by p, return p^m
 -- where m is the number of factors of p in n.
@@ -48,5 +45,5 @@ sumOfDivisorsPrime n (p:primeList)
   where
     j = repDiv n p
 
-sumOfDivisors :: Integral t => t -> t
+sumOfDivisors :: (Ix t, Integral t) => t -> t
 sumOfDivisors n = sumOfDivisorsPrime n (eSieve $ (ceiling . sqrt . fromIntegral) n)
