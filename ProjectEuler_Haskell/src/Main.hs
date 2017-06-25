@@ -24,6 +24,12 @@ import qualified Sol025
 import qualified Sol026
 import qualified Sol027
 import qualified Sol028
+import qualified Sol029
+import qualified Sol030
+import qualified Sol031
+import qualified Sol032
+import qualified Sol033
+import qualified Sol034
 import qualified Sol067
 import qualified Sol078
 
@@ -51,6 +57,12 @@ sol n = runSol theSol
                        , (26, Sol026.run)
                        , (27, Sol027.run)
                        , (28, Sol028.run)
+                       , (29, Sol029.run)
+                       , (30, Sol030.run)
+                       , (31, Sol031.run)
+                       , (32, Sol032.run)
+                       , (33, Sol033.run)
+                       , (34, Sol034.run)
                        , (67, Sol067.run)
                        , (78, Sol078.run)
                         ]
