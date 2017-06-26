@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -O2 #-}
-module Util (divides, factorial, fibbonacci,
+module Util (divides, factorial, fibbonacci, isPrime,
              eSieve, sumOfDivisors, sumOfDivisorsPrime)
   where
 import Data.Array.Unboxed (Ix, UArray, (!), (//), array, assocs)
@@ -14,6 +14,17 @@ factorial n = product [1..n]
 
 fibbonacci :: Integral t => [t]
 fibbonacci = 1 : 1 : zipWith (+) fibbonacci (tail fibbonacci )
+
+isPrime :: Integral t => t -> Bool
+isPrime 1 = False
+isPrime 2 = True
+isPrime n = checkFactors 2
+  where
+    checkFactors f
+      | f > limit     = True
+      | f `divides` n = False
+      | otherwise     = checkFactors (f+1)
+    limit = ceiling $ sqrt $ fromIntegral n
 
 -- sieve of eratosthenes
 eSieve :: forall t. (Ix t, Integral t) => t -> [t]
