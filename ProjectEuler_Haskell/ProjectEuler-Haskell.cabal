@@ -46,6 +46,8 @@ executable ProjectEuler-Haskell
                      , Sol037
                      , Sol038
                      , Sol039
+                     , Sol040
+                     , Sol041
                      , Sol067
                      , Sol078
   -- other-extensions:

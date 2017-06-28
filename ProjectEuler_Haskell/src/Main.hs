@@ -35,6 +35,8 @@ import qualified Sol036
 import qualified Sol037
 import qualified Sol038
 import qualified Sol039
+import qualified Sol040
+import qualified Sol041
 import qualified Sol067
 import qualified Sol078
 
@@ -73,6 +75,8 @@ sol n = runSol theSol
                        , (37, Sol037.run)
                        , (38, Sol038.run)
                        , (39, Sol039.run)
+                       , (40, Sol040.run)
+                       , (41, Sol041.run)
                        , (67, Sol067.run)
                        , (78, Sol078.run)
                         ]
