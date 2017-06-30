@@ -4,6 +4,7 @@ module Sol022 (run)
 import System.IO (openFile, IOMode(..), hGetContents, hClose)
 import Data.List (sort)
 import Data.Char (isAlpha, ord)
+import Util (splitOn)
 
 
 value :: (Integer, String) -> Integer
@@ -20,16 +21,6 @@ enumerate = enumerate' 0
   where
     enumerate' _ [] = []
     enumerate' i (e:l) = (i,e):enumerate' (i+1) l
-
-splitOn :: Char -> String -> [String]
-splitOn split = splitOn' ""
-  where
-    splitOn' :: String -> String -> [String]
-    splitOn' "" "" = []
-    splitOn' match ""  = [match]
-    splitOn' match (c:t)
-      | c==split   = match:splitOn' "" t
-      | otherwise = splitOn' (match++[c]) t
 
 run :: IO ()
 run = do

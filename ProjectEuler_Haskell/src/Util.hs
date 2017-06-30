@@ -2,7 +2,8 @@
 {-# LANGUAGE ScopedTypeVariables #-}
 {-# OPTIONS_GHC -O2 #-}
 module Util (divides, factorial, fibbonacci, isPrime,
-             eSieve, sumOfDivisors, sumOfDivisorsPrime)
+             eSieve, sumOfDivisors, sumOfDivisorsPrime,
+             splitOn)
   where
 import Data.Array.Unboxed (Ix, UArray, (!), (//), array, assocs)
 
@@ -58,3 +59,13 @@ sumOfDivisorsPrime n (p:primeList)
 
 sumOfDivisors :: (Ix t, Integral t) => t -> t
 sumOfDivisors n = sumOfDivisorsPrime n (eSieve $ (ceiling . sqrt . fromIntegral) n)
+
+splitOn :: Char -> String -> [String]
+splitOn split = splitOn' ""
+  where
+    splitOn' :: String -> String -> [String]
+    splitOn' "" "" = []
+    splitOn' match ""  = [match]
+    splitOn' match (c:t)
+      | c==split   = match:splitOn' "" t
+      | otherwise = splitOn' (match++[c]) t
