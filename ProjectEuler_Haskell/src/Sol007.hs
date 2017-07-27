@@ -1,4 +1,5 @@
-
+module Sol007 (run)
+  where
 
 isPrime :: Integer -> Bool
 isPrime i = isPrime' i 2 (floor $ sqrt $ fromIntegral i )
@@ -22,6 +23,6 @@ ithPrime' i x n = if isPrime x then
                   else ithPrime' i (x+2) n
 
 
-main :: IO()
-main = putStrLn $ show $ ithPrime 10001
+run :: IO()
+run = print $ ithPrime 10001
 -- main = putStrLn $ show $ [(i, isPrime i) | i<-[2..20]]

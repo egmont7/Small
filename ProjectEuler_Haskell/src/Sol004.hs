@@ -1,3 +1,5 @@
+module Sol004 (run)
+  where
 
 isPalindrome :: [Char] -> Bool
 isPalindrome x = if (length x) < 2
@@ -9,5 +11,5 @@ isPalindrome x = if (length x) < 2
 biggestPalindrome :: Int -> Int
 biggestPalindrome n = maximum [x*y | x <- [1..n], y <- [1..n] , isPalindrome $ show (x*y)]
 
-main :: IO()
-main = putStrLn $ show $ biggestPalindrome 1000
+run :: IO()
+run = print $ biggestPalindrome 1000

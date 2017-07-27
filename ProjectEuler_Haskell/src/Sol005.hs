@@ -1,3 +1,5 @@
+module Sol005 (run)
+  where
 isDivAll :: Integer -> Integer -> Bool
 isDivAll x n = and [(x `mod` i) == 0 | i <- [2..n]]
 
@@ -9,5 +11,5 @@ findMinDiv' i n = if isDivAll i n
 findMinDiv :: Integer -> Integer
 findMinDiv n = findMinDiv' n n
 
-main :: IO()
-main = putStrLn $ show $ findMinDiv 20
+run :: IO()
+run = print $ findMinDiv 20

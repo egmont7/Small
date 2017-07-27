@@ -1,2 +1,3 @@
 
-sol
+.cabal-sandbox/
+.stack-work/
