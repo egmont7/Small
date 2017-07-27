@@ -13,15 +13,16 @@ import os
 import transmissionrpc as trpc
 import feedparser
 
-from config import FEED_URL, EMAIL, EMAIL_PASSWD
+from config import FEED_URL, EMAIL, EMAIL_PASSWD, TRANSMISSION_RPC_USERNAME, TRANSMISSION_RPC_PASSWORD
 
-TORRENT_PATH = Path('/var/lib/transmission/Downloads/')  # Files get downloaded to here
+TORRENT_PATH = Path('/home/caleb/store/Torrents')  # Files get downloaded to here
 TV_PATH = Path('/home/caleb/store/TV/')  # Files get stored here
-DB = Path('/home/caleb/Small/TTTM/logs/manage_torrents.sqlite3')
-LOG = Path('/home/caleb/Small/TTTM/logs/manage_torrents.log')
+DB = Path('/home/caleb/Sources/Small/TTTM/logs/manage_torrents.sqlite3')
+LOG = Path('/home/caleb/Sources/Small/TTTM/logs/manage_torrents.log')
 TRANSMISSION_HOST = ('localhost', 9091)
 VIDEO_SUFFIX = {'.mkv', '.mp4'}
 
+DRY_RUN = False
 
 EpisodeStatus = Enum('EpisodeStatus', 'finished in_progress')
 
@@ -135,9 +136,13 @@ def db_rm_all():
     conn.commit()
     conn.close()
 
+def transmission_init_client():
+    return trpc.Client(*TRANSMISSION_HOST,
+                       user=TRANSMISSION_RPC_USERNAME,
+                       password=TRANSMISSION_RPC_PASSWORD)
 
 def transmission_get_torrents():
-    tc = trpc.Client(*TRANSMISSION_HOST)
+    tc = transmission_init_client()
     return {t.hashString: t for t in tc.get_torrents()}
 
 
@@ -146,7 +151,7 @@ def transmission_add_episode(episode):
            "\n\tEpisode: {}\n\tURL: {}")
     logging.info(fmt.format(episode.show_name, episode.season_number,
                             episode.episode_number, episode.torrent_url))
-    tc = trpc.Client(*TRANSMISSION_HOST)
+    tc = transmission_init_client()
     episode.torrent = tc.add_torrent(episode.torrent_url)
     episode.torrent_hash = episode.torrent.hashString
     episode.status = EpisodeStatus.in_progress
@@ -156,12 +161,12 @@ def transmission_add_episode(episode):
 def transmission_rm_episode(episode):
     fmt = "Removing torrent ID:{} , {}"
     logging.info(fmt.format(episode.torrent_hash, episode))
-    tc = trpc.Client(*TRANSMISSION_HOST)
+    tc = transmission_init_client()
     tc.remove_torrent(episode.torrent.id)
 
 
 def transmission_rm_all():
-    tc = trpc.Client(*TRANSMISSION_HOST)
+    tc = transmission_init_client()
     for torrent in tc.get_torrents():
         tc.remove_torrent(torrent.id, delete_data=True)
 
@@ -240,6 +245,9 @@ def transfer_episode_files(episode, files):
 
 
 def finish_episode(episode):
+    logging.info("finishing episode: {}".format(episode))
+    if DRY_RUN:
+        return
     files = episode.torrent.files().values()
     transmission_rm_episode(episode)
     transfer_episode_files(episode, files)
@@ -249,6 +257,9 @@ def finish_episode(episode):
 
 
 def start_episode(episode):
+    logging.info("starting episode: {}".format(episode))
+    if DRY_RUN:
+        return
     transmission_add_episode(episode)
     db_put_episode(episode)
 
@@ -276,6 +287,6 @@ if __name__ == '__main__':
             start_episode(ep)
         for ep in get_to_finish():
             finish_episode(ep)
-        rm_old_episodes(TV_PATH)
+#         rm_old_episodes(TV_PATH)
     except Exception as e:
         logging.exception(e)
